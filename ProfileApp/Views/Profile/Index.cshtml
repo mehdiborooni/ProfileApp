@@ -1,0 +1,61 @@
+﻿
+@using ProfileApp.Common
+@model IEnumerable<ProfileApp.Models.Profile>
+<h2>ProfileIndex</h2>
+<hr />
+<a asp-action="Create" asp-controller="Profile" class="btn btn-dark">Create
+    <i class="fa fa-plus"></i>
+    </a>
+<hr />
+
+
+<table class="table table-hover">
+<thead>
+    <tr>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Gender</th>
+        <th>Desc</th>
+        <th>Phone</th>
+        <th>IsActive</th>
+        <th>TimeCreated</th>
+        <th>TimeEdited</th>
+        <th></th>
+        <th></th>
+    </tr>
+</thead>
+
+    @foreach (var profile in Model)
+
+    { 
+        <tr>
+
+            <td>@profile.FirstName</td>
+            <td>@profile.LastName</td>
+            <td>
+                @if (profile.Gender == GenderType.Male)
+                {
+                    <i class="fa fa-male"></i>
+                }
+                else if (profile.Gender == GenderType.Female)
+                {
+                    <i class="fa fa-female"></i>
+                }
+                else
+                {
+                    <i class="fa fa-minus"></i>
+                }
+                @profile.Gender.DisplayName()
+
+            </td>
+            <td>@profile.Desc</td>
+            <td>@profile.Phone</td>
+            <td>@profile.IsActive</td>
+            <td>@profile.TimeCreated</td>
+            <td>@profile.TimeEdited</td>
+            <td><a asp-action="Details" asp-route-id="@profile.Id" asp-controller="Profile" class="btn btn-info">Details</a></td>
+            <td><a asp-action="Edit" asp-route-id="@profile.Id" asp-controller="Profile" class="btn btn-primary">Edit</a></td>
+
+        </tr>
+    }
+<table/>

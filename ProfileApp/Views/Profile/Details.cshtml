@@ -1,0 +1,16 @@
+﻿@model ProfileApp.Models.Profile
+
+<h2>Details</h2>
+
+<hr />
+
+
+<p>FirstName: @Model.FirstName</p>
+<p>LastName: @Model.LastName</p>
+<p>Desc: @Model.Desc</p>
+<p>Phone: @Model.Phone</p>
+IsActive:<input type="checkbox" name="active" value="true" asp-for="IsActive" />
+<p>TimeCreated: @Model.TimeCreated</p>
+<p>TimeEdited: @Model.TimeEdited</p>
+
+<a asp-action="Index" asp-controller="Profile">Back to list</a>
