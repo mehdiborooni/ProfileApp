@@ -19,7 +19,7 @@
     <p><select asp-for="Gender" asp-items="Html.GetEnumSelectList<GenderType>()" class="form-control" placeholder="Gender"></select></p>
     <p><textarea asp-for="Desc" class="form-control" placeholder="Desc"></textarea></p>
     <p><input asp-for="Phone" class="form-control" placeholder="FirstName" /></p>
-    <input type="checkbox" asp-for="IsActive" />
+    <p><select asp-for="IsActive" asp-items="Html.GetEnumSelectList<IsActiveType>()" class="form-control" placeholder="IsActive"></select></p>
     <p>
         <button type="submit" class="btn btn-success">Save</button>
         <a asp-action="Index" asp-controller="Profile">Back to list</a>

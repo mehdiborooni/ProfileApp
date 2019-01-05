@@ -9,7 +9,7 @@ using ProfileApp.Data;
 using Microsoft.EntityFrameworkCore;
 using ProfileApp.Common;
 
-namespace BugApp.Controllers
+namespace ProfileApp.Controllers
 {
     public class ProfileController : Controller
     {

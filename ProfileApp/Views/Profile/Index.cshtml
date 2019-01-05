@@ -50,7 +50,25 @@
             </td>
             <td>@profile.Desc</td>
             <td>@profile.Phone</td>
-            <td>@profile.IsActive</td>
+            <td>
+                @if (profile.IsActive == IsActiveType.Active)
+                {
+                    <i class="fa fa-check"></i>
+                }
+                else if (profile.IsActive == IsActiveType.DeActive)
+                {
+                    <i class="fa fa-times"></i>
+                }
+                else if (profile.IsActive == IsActiveType.Block)
+                {
+                    <i class="fa fa-ban"></i>
+                }
+                else
+                {
+                    <i class="fa fa-minus"></i>
+                }
+                @profile.IsActive.DisplayName()
+            </td>
             <td>@profile.TimeCreated</td>
             <td>@profile.TimeEdited</td>
             <td><a asp-action="Details" asp-route-id="@profile.Id" asp-controller="Profile" class="btn btn-info">Details</a></td>

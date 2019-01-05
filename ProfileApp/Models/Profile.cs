@@ -15,7 +15,7 @@ namespace ProfileApp.Models
         public string Phone { get; set; }
         public DateTime TimeCreated { get; set; }
         public DateTime TimeEdited { get; set; }
-        public bool IsActive { get; set; }
+        public IsActiveType IsActive { get; set; }
         public GenderType Gender { get; set; }
     }
     public enum GenderType 
@@ -26,5 +26,12 @@ namespace ProfileApp.Models
         Male=1,
         [Display(Name = "زن")]
         Female =2
+    }
+    public enum IsActiveType
+    {
+        None =0,
+        Active =1,
+        DeActive =2,
+        Block =3
     }
 }
