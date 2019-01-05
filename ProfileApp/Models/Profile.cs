@@ -12,6 +12,7 @@ namespace ProfileApp.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Desc { get; set; }
+        public int Age { get; set; }
         public string Phone { get; set; }
         public DateTime TimeCreated { get; set; }
         public DateTime TimeEdited { get; set; }
