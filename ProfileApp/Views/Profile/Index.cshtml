@@ -10,7 +10,7 @@
 <hr />
 <form method="get" class="form-inline">
     <input name="term" class="form-control" style="width: 300px" />
-    <button type="submit" class="btn btn-primary">Search</button>
+    <button type="submit" class="btn btn-primary" style="margin-left: 10px">Search</button>
 </form>
 <hr />
 <a asp-action="Create" asp-controller="Profile" class="btn btn-dark">Create
@@ -64,15 +64,15 @@
         <td>
             @if (profile.IsActive == IsActiveType.Active)
             {
-                <i class="fa fa-check"></i>
+                <i class="fa fa-check" style="color:chartreuse"></i>
             }
             else if (profile.IsActive == IsActiveType.DeActive)
             {
-                <i class="fa fa-times"></i>
+                <i class="fa fa-times" style="color:dimgray"></i>
             }
             else if (profile.IsActive == IsActiveType.Block)
             {
-                <i class="fa fa-ban"></i>
+                <i class="fa fa-ban" style="color: red"></i>
             }
             else
             {
