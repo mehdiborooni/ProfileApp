@@ -33,11 +33,7 @@ namespace ProfileApp
 
             app.UseStaticFiles();
 
-            app.UseMvc(routing =>
-            {
-                routing.MapRoute("Default","{controller=profile}/{action=index}/{id?}");
-                
-            });
+            app.UseMvcWithDefaultRoute();
         }
     }
 }

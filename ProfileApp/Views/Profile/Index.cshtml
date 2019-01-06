@@ -9,7 +9,8 @@
 <h2>ProfileIndex</h2>
 <hr />
 <form method="get" class="form-inline">
-    <input name="term" class="form-control" style="width: 300px" />
+    <input name="sortBy" value="@ViewData["sortby"]" hidden="" />
+    <input name="term" class="form-control" style="width: 300px" value="@ViewData["term"]"/>
     <button type="submit" class="btn btn-primary" style="margin-left: 10px">Search</button>
 </form>
 <hr />
@@ -26,11 +27,11 @@
         <th><a asp-action="Index" asp-controller="Profile" asp-route-sortby="firstname">FirstName</a></th>
         <th><a asp-action="Index" asp-controller="Profile" asp-route-sortby="LastName">LastName</a></th>
         <th><a asp-action="Index" asp-controller="Profile" asp-route-sortby="Gender">Gender</a></th>
-        <th><a asp-action="Index" asp-controller="Profile" asp-route-sortby="Age">Age</a></th>
+        <th><a asp-action="Index" asp-controller="Profile" asp-route-sortby="Age" asp-route-term="@ViewData["term"]">Age</a></th>
         <th>Phone</th>
         <th><a asp-action="Index" asp-controller="Profile" asp-route-sortby="IsActive">IsActive</a></th>
-        <th>TimeCreated</th>
-        <th>TimeEdited</th>
+        @*<th>TimeCreated</th>
+        <th>TimeEdited</th>*@
         <th></th>
         <th></th>
     </tr>
@@ -80,8 +81,8 @@
             }
             @profile.IsActive.DisplayName()
         </td>
-        <td>@profile.TimeCreated</td>
-        <td>@profile.TimeEdited</td>
+        @*<td>@profile.TimeCreated</td>
+        <td>@profile.TimeEdited</td>*@
         <td><a asp-action="Details" asp-route-id="@profile.Id" asp-controller="Profile" class="btn btn-info">Details</a></td>
         <td><a asp-action="Edit" asp-route-id="@profile.Id" asp-controller="Profile" class="btn btn-primary">Edit</a></td>
 

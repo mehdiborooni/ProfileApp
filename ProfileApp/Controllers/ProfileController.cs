@@ -23,13 +23,12 @@ namespace ProfileApp.Controllers
             _db = db;
         }
 
-        [Route("profile/index/{sortBy?}/{term?}")]
+        [Route("/")]
+        //[Route("profile/{sortBy?}/{term?}")]
         public IActionResult Index(string sortBy= "FirstName", string term="")
         {
             IEnumerable<Profile> model;
-
-            //model = string.IsNullOrEmpty(term) ? _db.Profiles.OrderBy(m => m.FirstName) : _db.Profiles.OrderBy(m => m.FirstName).Where(b => b.FirstName.Contains(term));
-
+            
 
             switch (sortBy)
             {
@@ -65,7 +64,8 @@ namespace ProfileApp.Controllers
                     }
             }
 
-
+            ViewData["term"] = term;
+            ViewData["sortby"] = sortBy;
             return View(model);
         }
         [Route("profile/create/{id?}")]
