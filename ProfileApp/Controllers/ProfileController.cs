@@ -23,7 +23,7 @@ namespace ProfileApp.Controllers
             _db = db;
         }
 
-        [Route("profile/{sortBy?}/{term?}")]
+        [Route("profile/index/{sortBy?}/{term?}")]
         public IActionResult Index(string sortBy= "FirstName", string term="")
         {
             IEnumerable<Profile> model;
@@ -68,23 +68,27 @@ namespace ProfileApp.Controllers
 
             return View(model);
         }
-
+        [Route("profile/create/{id?}")]
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
+       
         [HttpPost]
         public IActionResult Create(Profile model)
         {
+            
             model.TimeCreated = DateTime.Now;
            
             _db.Profiles.Add(model);
             _db.SaveChanges();
             return RedirectToAction(nameof(Index));
+           
         }
 
+        [Route("profile/details/{id?}")]
         public IActionResult Details(int id)
         {
             var model = _db.Profiles.Find(id);
@@ -98,6 +102,7 @@ namespace ProfileApp.Controllers
             return View(model);
         }
 
+        [Route("profile/edit/{id?}")]
         [HttpPost]
         public IActionResult Edit(Profile model)
         {

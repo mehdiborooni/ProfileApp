@@ -35,7 +35,7 @@ namespace ProfileApp
 
             app.UseMvc(routing =>
             {
-                routing.MapRoute("Default","{controller=Profile}/{action=Index}/{id?}");
+                routing.MapRoute("Default","{controller=profile}/{action=index}/{id?}");
                 
             });
         }
