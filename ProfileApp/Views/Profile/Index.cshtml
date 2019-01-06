@@ -1,6 +1,11 @@
 ﻿
+@using Microsoft.AspNetCore.Mvc.Razor.Internal
 @using ProfileApp.Common
 @model IEnumerable<ProfileApp.Models.Profile>
+
+@{
+    var i = 1;
+}
 <h2>ProfileIndex</h2>
 <hr />
 <a asp-action="Create" asp-controller="Profile" class="btn btn-dark">Create
@@ -12,6 +17,7 @@
 <table class="table table-hover">
 <thead>
     <tr>
+        <th>#</th>
         <th>FirstName</th>
         <th>LastName</th>
         <th>Gender</th>
@@ -24,56 +30,63 @@
         <th></th>
     </tr>
 </thead>
-
+<tbody>
     @foreach (var profile in Model)
 
-    { 
-        <tr>
+    {
+    <tr>
+        <td>@i</td>
+        <td>@profile.FirstName</td>
+        <td>@profile.LastName</td>
+        <td>
+            @if (profile.Gender == GenderType.Male)
+            {
+                <i class="fa fa-male"></i>
+            }
+            else if (profile.Gender == GenderType.Female)
+            {
+                <i class="fa fa-female"></i>
+            }
+            else
+            {
+                <i class="fa fa-minus"></i>
+            }
+            @profile.Gender.DisplayName()
 
-            <td>@profile.FirstName</td>
-            <td>@profile.LastName</td>
-            <td>
-                @if (profile.Gender == GenderType.Male)
-                {
-                    <i class="fa fa-male"></i>
-                }
-                else if (profile.Gender == GenderType.Female)
-                {
-                    <i class="fa fa-female"></i>
-                }
-                else
-                {
-                    <i class="fa fa-minus"></i>
-                }
-                @profile.Gender.DisplayName()
+        </td>
+        <td>@profile.Age</td>
+        <td>@profile.Phone</td>
+        <td>
+            @if (profile.IsActive == IsActiveType.Active)
+            {
+                <i class="fa fa-check"></i>
+            }
+            else if (profile.IsActive == IsActiveType.DeActive)
+            {
+                <i class="fa fa-times"></i>
+            }
+            else if (profile.IsActive == IsActiveType.Block)
+            {
+                <i class="fa fa-ban"></i>
+            }
+            else
+            {
+                <i class="fa fa-minus"></i>
+            }
+            @profile.IsActive.DisplayName()
+        </td>
+        <td>@profile.TimeCreated</td>
+        <td>@profile.TimeEdited</td>
+        <td><a asp-action="Details" asp-route-id="@profile.Id" asp-controller="Profile" class="btn btn-info">Details</a></td>
+        <td><a asp-action="Edit" asp-route-id="@profile.Id" asp-controller="Profile" class="btn btn-primary">Edit</a></td>
 
-            </td>
-            <td>@profile.Age</td>
-            <td>@profile.Phone</td>
-            <td>
-                @if (profile.IsActive == IsActiveType.Active)
-                {
-                    <i class="fa fa-check"></i>
-                }
-                else if (profile.IsActive == IsActiveType.DeActive)
-                {
-                    <i class="fa fa-times"></i>
-                }
-                else if (profile.IsActive == IsActiveType.Block)
-                {
-                    <i class="fa fa-ban"></i>
-                }
-                else
-                {
-                    <i class="fa fa-minus"></i>
-                }
-                @profile.IsActive.DisplayName()
-            </td>
-            <td>@profile.TimeCreated</td>
-            <td>@profile.TimeEdited</td>
-            <td><a asp-action="Details" asp-route-id="@profile.Id" asp-controller="Profile" class="btn btn-info">Details</a></td>
-            <td><a asp-action="Edit" asp-route-id="@profile.Id" asp-controller="Profile" class="btn btn-primary">Edit</a></td>
-
-        </tr>
+    </tr>
+        i++;
     }
-<table/>
+<tr>
+    <td colspan="3">
+        count: @Model.Count()
+    </td>
+</tr>
+</tbody>
+</table>
