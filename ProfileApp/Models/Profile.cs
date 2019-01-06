@@ -12,6 +12,7 @@ namespace ProfileApp.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Desc { get; set; }
+        [Range(12,99,ErrorMessage = "age must be 12 to 99")]
         public int Age { get; set; }
         public string Phone { get; set; }
         public DateTime TimeCreated { get; set; }

@@ -79,13 +79,18 @@ namespace ProfileApp.Controllers
         [HttpPost]
         public IActionResult Create(Profile model)
         {
-            
-            model.TimeCreated = DateTime.Now;
-           
-            _db.Profiles.Add(model);
-            _db.SaveChanges();
-            return RedirectToAction(nameof(Index));
-           
+            if (ModelState.IsValid)
+            {
+                model.TimeCreated = DateTime.Now;
+
+                _db.Profiles.Add(model);
+                _db.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return View(model);
+            }
         }
 
         [Route("profile/details/{id?}")]
