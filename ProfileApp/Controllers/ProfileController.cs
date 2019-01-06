@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using ProfileApp.Data;
 using Microsoft.EntityFrameworkCore;
 using ProfileApp.Common;
+using ProfileApp.Models.Enums;
 
 namespace ProfileApp.Controllers
 {
@@ -25,7 +26,7 @@ namespace ProfileApp.Controllers
 
         [Route("/")]
         //[Route("profile/{sortBy?}/{term?}")]
-        public IActionResult Index(string sortBy= "FirstName", string term="")
+        public IActionResult Index(string sortBy= "FirstName", string term="", SortOrderType orderType=SortOrderType.Asc)
         {
             IEnumerable<Profile> model;
             
@@ -66,6 +67,19 @@ namespace ProfileApp.Controllers
 
             ViewData["term"] = term;
             ViewData["sortby"] = sortBy;
+            
+
+            if (orderType==SortOrderType.Dsc)
+            {
+                model = model.Reverse();
+                orderType = SortOrderType.Asc;
+            }
+            else
+            {
+                orderType = SortOrderType.Dsc;
+            }
+            ViewData["orderType"] = orderType;
+
             return View(model);
         }
         [Route("profile/create/{id?}")]
