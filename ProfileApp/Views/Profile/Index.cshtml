@@ -8,6 +8,11 @@
 }
 <h2>ProfileIndex</h2>
 <hr />
+<form method="get" class="form-inline">
+    <input name="term" class="form-control" style="width: 300px" />
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+<hr />
 <a asp-action="Create" asp-controller="Profile" class="btn btn-dark">Create
     <i class="fa fa-plus"></i>
     </a>
@@ -18,12 +23,12 @@
 <thead>
     <tr>
         <th>#</th>
-        <th>FirstName</th>
-        <th>LastName</th>
-        <th>Gender</th>
-        <th>Age</th>
+        <th><a asp-action="Index" asp-controller="Profile" asp-route-sortby="firstname">FirstName</a></th>
+        <th><a asp-action="Index" asp-controller="Profile" asp-route-sortby="LastName">LastName</a></th>
+        <th><a asp-action="Index" asp-controller="Profile" asp-route-sortby="Gender">Gender</a></th>
+        <th><a asp-action="Index" asp-controller="Profile" asp-route-sortby="Age">Age</a></th>
         <th>Phone</th>
-        <th>IsActive</th>
+        <th><a asp-action="Index" asp-controller="Profile" asp-route-sortby="IsActive">IsActive</a></th>
         <th>TimeCreated</th>
         <th>TimeEdited</th>
         <th></th>

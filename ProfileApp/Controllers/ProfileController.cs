@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Threading;
 using System.Threading.Tasks;
 using ProfileApp.Data;
@@ -13,15 +15,57 @@ namespace ProfileApp.Controllers
 {
     public class ProfileController : Controller
     {
+        
         private readonly ProfileDbContext _db;
 
         public ProfileController(ProfileDbContext db)
         {
             _db = db;
         }
-        public IActionResult Index()
+
+        [Route("profile/{sortBy?}/{term?}")]
+        public IActionResult Index(string sortBy= "FirstName", string term="")
         {
-            var model = _db.Profiles;
+            IEnumerable<Profile> model;
+
+            //model = string.IsNullOrEmpty(term) ? _db.Profiles.OrderBy(m => m.FirstName) : _db.Profiles.OrderBy(m => m.FirstName).Where(b => b.FirstName.Contains(term));
+
+
+            switch (sortBy)
+            {
+                case "FirstName":
+                    {
+                        model = string.IsNullOrEmpty(term) ? _db.Profiles.OrderBy(m => m.FirstName) : _db.Profiles.OrderBy(m => m.FirstName).Where(b => b.FirstName.Contains(term));
+                        break;
+                    }
+                case "LastName":
+                    {
+                        model = string.IsNullOrEmpty(term) ? _db.Profiles.OrderBy(m => m.LastName) : _db.Profiles.OrderBy(m => m.LastName).Where(b => b.FirstName.Contains(term));
+                        break;
+                    }
+                case "Gender":
+                    {
+                        model = string.IsNullOrEmpty(term) ? _db.Profiles.OrderBy(m => m.Gender) : _db.Profiles.OrderBy(m => m.Gender).Where(b => b.FirstName.Contains(term));
+                        break;
+                    }
+                case "Age":
+                    {
+                        model = string.IsNullOrEmpty(term) ? _db.Profiles.OrderBy(m => m.Age) : _db.Profiles.OrderBy(m => m.Age).Where(b => b.FirstName.Contains(term));
+                        break;
+                    }
+                case "IsActive":
+                    {
+                        model = string.IsNullOrEmpty(term) ? _db.Profiles.OrderBy(m => m.IsActive) : _db.Profiles.OrderBy(m => m.IsActive).Where(b => b.FirstName.Contains(term));
+                        break;
+                    }
+                default:
+                    {
+                        model = string.IsNullOrEmpty(term) ? _db.Profiles : _db.Profiles.Where(b => b.FirstName.Contains(term));
+                        break;
+                    }
+            }
+
+
             return View(model);
         }
 
