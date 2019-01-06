@@ -29,38 +29,47 @@ namespace ProfileApp.Controllers
         public IActionResult Index(string sortBy= "FirstName", string term="", SortOrderType orderType=SortOrderType.Asc)
         {
             IEnumerable<Profile> model;
+
+            if (!string.IsNullOrEmpty(term))
+            {
+              model = _db.Profiles.OrderBy(m => m.FirstName).Where(b => b.FirstName.Contains(term));
+            }
+            else
+            {
+                model = _db.Profiles;
+            }
             
 
             switch (sortBy)
             {
                 case "FirstName":
                     {
-                        model = string.IsNullOrEmpty(term) ? _db.Profiles.OrderBy(m => m.FirstName) : _db.Profiles.OrderBy(m => m.FirstName).Where(b => b.FirstName.Contains(term));
+                       model = model.OrderBy(m => m.FirstName);
                         break;
                     }
                 case "LastName":
                     {
-                        model = string.IsNullOrEmpty(term) ? _db.Profiles.OrderBy(m => m.LastName) : _db.Profiles.OrderBy(m => m.LastName).Where(b => b.FirstName.Contains(term));
+                        model = model.OrderBy(m => m.LastName);
                         break;
                     }
                 case "Gender":
                     {
-                        model = string.IsNullOrEmpty(term) ? _db.Profiles.OrderBy(m => m.Gender) : _db.Profiles.OrderBy(m => m.Gender).Where(b => b.FirstName.Contains(term));
+                        model = model.OrderBy(m => m.Gender);
                         break;
                     }
                 case "Age":
                     {
-                        model = string.IsNullOrEmpty(term) ? _db.Profiles.OrderBy(m => m.Age) : _db.Profiles.OrderBy(m => m.Age).Where(b => b.FirstName.Contains(term));
+                        model = model.OrderBy(m => m.Age);
                         break;
                     }
                 case "IsActive":
                     {
-                        model = string.IsNullOrEmpty(term) ? _db.Profiles.OrderBy(m => m.IsActive) : _db.Profiles.OrderBy(m => m.IsActive).Where(b => b.FirstName.Contains(term));
+                        model = model.OrderBy(m => m.IsActive);
                         break;
                     }
                 default:
                     {
-                        model = string.IsNullOrEmpty(term) ? _db.Profiles : _db.Profiles.Where(b => b.FirstName.Contains(term));
+                        
                         break;
                     }
             }
