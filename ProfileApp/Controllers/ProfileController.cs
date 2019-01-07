@@ -26,7 +26,7 @@ namespace ProfileApp.Controllers
 
         [Route("/")]
         //[Route("profile/{sortBy?}/{term?}")]
-        public IActionResult Index(string sortBy= "", string term="", SortOrderType orderType=SortOrderType.Asc)
+        public IActionResult Index(string sortBy= "", string term="", SortOrderType orderType1=SortOrderType.Asc , SortOrderType orderType2= SortOrderType.Asc)
         {
             IEnumerable<Profile> model;
 
@@ -75,7 +75,7 @@ namespace ProfileApp.Controllers
             }
 
             ViewData["term"] = term;
-
+            ViewData["sortBy"] = sortBy;
 
 
 
@@ -89,21 +89,23 @@ namespace ProfileApp.Controllers
             //    orderType = SortOrderType.Dsc;
             //}
 
-            
-            if (orderType == SortOrderType.Dsc)
+
+            if (orderType1 == SortOrderType.Dsc)
             {
+                orderType1 = SortOrderType.Asc;
+                
                 model = model.Reverse();
-                orderType = SortOrderType.Asc;
+                orderType2 = SortOrderType.Asc;
             }
             else
             {
-                
-                orderType = SortOrderType.Dsc;
-        
+                orderType1 = SortOrderType.Dsc;
+                orderType2 = SortOrderType.Dsc;
             }
 
-            ViewData["sortBy"] = sortBy;
-            ViewData["orderType"] = orderType;
+            
+            ViewData["orderType1"] = orderType1;
+            ViewData["orderType2"] = orderType2;
 
             return View(model);
         }
