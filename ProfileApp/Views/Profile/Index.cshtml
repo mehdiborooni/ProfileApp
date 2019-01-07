@@ -9,7 +9,7 @@
 <h2>ProfileIndex</h2>
 <hr />
 <form method="get" class="form-inline">
-    <input name="sortBy" value="@ViewData["sortby"]" hidden="" />
+    <input name="sortBy" value="@ViewData["sortBy"]" hidden="" />
     <input name="term" class="form-control" style="width: 300px" value="@ViewData["term"]"/>
     <button type="submit" class="btn btn-primary" style="margin-left: 10px">Search</button>
 </form>
@@ -24,12 +24,32 @@
 <thead>
     <tr>
         <th>#</th>
-        <th><a asp-action="Index" asp-controller="Profile" asp-route-sortby="FirstName">FirstName</a></th>
-        <th><a asp-action="Index" asp-controller="Profile" asp-route-sortby="LastName">LastName</a></th>
-        <th><a asp-action="Index" asp-controller="Profile" asp-route-sortby="Gender">Gender</a></th>
-        <th><a asp-action="Index" asp-controller="Profile" asp-route-sortby="Age" asp-route-term="@ViewData["term"]" asp-route-ordertype="@ViewData["orderType"]">Age</a></th>
+        <th>
+            <a asp-action="Index" asp-controller="Profile" asp-route-sortby="FirstName" asp-route-term="@ViewData["term"]" asp-route-ordertype="@ViewData["orderType"]" style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
+            FirstName
+            <a asp-action="Index" asp-controller="Profile" asp-route-sortby="FirstName" asp-route-term="@ViewData["term"]" asp-route-ordertype="@ViewData["orderType"]" style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-controller="Profile" asp-route-sortby="LastName" asp-route-term="@ViewData["term"]" asp-route-ordertype="@ViewData["orderType"]" style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
+            LastName
+            <a asp-action="Index" asp-controller="Profile" asp-route-sortby="LastName" asp-route-term="@ViewData["term"]" asp-route-ordertype="@ViewData["orderType"]" style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-controller="Profile" asp-route-sortby="Gender" asp-route-term="@ViewData["term"]" asp-route-ordertype="@ViewData["orderType"]" style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
+            Gender
+            <a asp-action="Index" asp-controller="Profile" asp-route-sortby="Gender" asp-route-term="@ViewData["term"]" asp-route-ordertype="@ViewData["orderType"]" style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-controller="Profile" asp-route-sortby="Age" asp-route-term="@ViewData["term"]" asp-route-ordertype="@ViewData["orderType"]" style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
+            Age
+            <a asp-action="Index" asp-controller="Profile" asp-route-sortby="Age" asp-route-term="@ViewData["term"]" asp-route-ordertype="@ViewData["orderType"]" style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
+        </th>
         <th>Phone</th>
-        <th><a asp-action="Index" asp-controller="Profile" asp-route-sortby="IsActive">IsActive</a></th>
+        <th>
+            <a asp-action="Index" asp-controller="Profile" asp-route-sortby="IsActive" asp-route-term="@ViewData["term"]" asp-route-ordertype="@ViewData["orderType"]" style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
+            IsActive
+            <a asp-action="Index" asp-controller="Profile" asp-route-sortby="IsActive" asp-route-term="@ViewData["term"]" asp-route-ordertype="@ViewData["orderType"]" style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
+        </th>
         @*<th>TimeCreated</th>
         <th>TimeEdited</th>*@
         <th></th>
