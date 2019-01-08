@@ -8,112 +8,125 @@
 }
 <h2>ProfileIndex</h2>
 <hr />
-<form method="get" class="form-inline">
+<form method="get" class="form-inline" >
     <input name="sortBy" value="@ViewData["sortBy"]" hidden="" />
     <input name="sortBy2" value="@ViewData["sortBy2"]" hidden="" />
-    <input name="term" class="form-control" style="width: 300px" value="@ViewData["term"]" />
+    <p style="margin: 0 10px 0 10px; font-size: 20px">نام کاربر :</p>
+    <input name="term" class="form-control" style="width: 200px" value="@ViewData["term"]" />
+    <div style="display: flex; align-items: center; margin: 0 10px 0 10px" class="form-control">
+        <p style="margin: 0 10px 0 10px; font-size: 20px">جستجو بر اساس وضعیت کاربر :</p>
+        <div style="display: flex; align-items: center">
+            <p style="margin: 0 10px 0 10px; font-size: 15px">کاربر فعال</p>
+            <input type="checkbox" name="active" value="active" />
+            <p style="margin: 0 10px 0 10px; font-size: 15px">کاربر غیر فعال</p>
+            <input type="checkbox" name="deactive" value="deactive" />
+            <p style="margin: 0 10px 0 10px; font-size: 15px">کاربر مسدود</p>
+            <input type="checkbox" name="block" value="block" />
+        </div>
+    </div>
     <button type="submit" class="btn btn-primary" style="margin-left: 10px">Search</button>
 </form>
 <hr />
-<a asp-action="Create" asp-controller="Profile" class="btn btn-dark">Create
+<a asp-action="Create" asp-controller="Profile" class="btn btn-dark">
+    Create
     <i class="fa fa-plus"></i>
-    </a>
+</a>
 <hr />
 
 
 <table class="table table-hover">
-<thead>
-    <tr>
-        <th>#</th>
-        <th>
-            <a asp-action="Index" asp-controller="Profile" asp-route-sortByAsc="FirstName" asp-route-term="@ViewData["term"]" style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
-            FirstName
-            <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="FirstName" asp-route-term="@ViewData["term"]" style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
-        </th>
-        <th>
-            <a asp-action="Index" asp-controller="Profile" asp-route-sortByAsc="LastName" asp-route-term="@ViewData["term"]" style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
-            LastName
-            <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="LastName" asp-route-term="@ViewData["term"]" style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
-        </th>
-        <th>
-            <a asp-action="Index" asp-controller="Profile" asp-route-sortByAsc="Gender" asp-route-term="@ViewData["term"]" style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
-            Gender
-            <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="Gender" asp-route-term="@ViewData["term"]" style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
-        </th>
-        <th>
-            <a asp-action="Index" asp-controller="Profile" asp-route-sortByAsc="Age" asp-route-term="@ViewData["term"]" style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
-            Age
-            <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="Age" asp-route-term="@ViewData["term"]" style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
-        </th>
-        <th>Phone</th>
-        <th>
-            <a asp-action="Index" asp-controller="Profile" asp-route-sortByAsc="IsActive" asp-route-term="@ViewData["term"]" style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
-            IsActive
-            <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="IsActive" asp-route-term="@ViewData["term"]" style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
-        </th>
-        @*<th>TimeCreated</th>
-        <th>TimeEdited</th>*@
-        <th></th>
-        <th></th>
-    </tr>
-</thead>
-<tbody>
-    @foreach (var profile in Model)
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>
+                <a asp-action="Index" asp-controller="Profile" asp-route-sortByAsc="FirstName" asp-route-term="@ViewData["term"]" style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
+                FirstName
+                <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="FirstName" asp-route-term="@ViewData["term"]" style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-controller="Profile" asp-route-sortByAsc="LastName" asp-route-term="@ViewData["term"]" style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
+                LastName
+                <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="LastName" asp-route-term="@ViewData["term"]" style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-controller="Profile" asp-route-sortByAsc="Gender" asp-route-term="@ViewData["term"]" style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
+                Gender
+                <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="Gender" asp-route-term="@ViewData["term"]" style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-controller="Profile" asp-route-sortByAsc="Age" asp-route-term="@ViewData["term"]" style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
+                Age
+                <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="Age" asp-route-term="@ViewData["term"]" style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
+            </th>
+            <th>Phone</th>
+            <th>
+                <a asp-action="Index" asp-controller="Profile" asp-route-sortByAsc="IsActive" asp-route-term="@ViewData["term"]" style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
+                IsActive
+                <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="IsActive" asp-route-term="@ViewData["term"]" style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
+            </th>
+            @*<th>TimeCreated</th>
+                <th>TimeEdited</th>*@
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var profile in Model)
 
-    {
-    <tr>
-        <td>@i</td>
-        <td>@profile.FirstName</td>
-        <td>@profile.LastName</td>
-        <td>
-            @if (profile.Gender == GenderType.Male)
-            {
-                <i class="fa fa-male"></i>
-            }
-            else if (profile.Gender == GenderType.Female)
-            {
-                <i class="fa fa-female"></i>
-            }
-            else
-            {
-                <i class="fa fa-minus"></i>
-            }
-            @profile.Gender.DisplayName()
+        {
+            <tr>
+                <td>@i</td>
+                <td>@profile.FirstName</td>
+                <td>@profile.LastName</td>
+                <td>
+                    @if (profile.Gender == GenderType.Male)
+                    {
+                        <i class="fa fa-male"></i>
+                    }
+                    else if (profile.Gender == GenderType.Female)
+                    {
+                        <i class="fa fa-female"></i>
+                    }
+                    else
+                    {
+                        <i class="fa fa-minus"></i>
+                    }
+                    @profile.Gender.DisplayName()
 
-        </td>
-        <td>@profile.Age</td>
-        <td>@profile.Phone</td>
-        <td>
-            @if (profile.IsActive == IsActiveType.Active)
-            {
-                <i class="fa fa-check" style="color:chartreuse"></i>
-            }
-            else if (profile.IsActive == IsActiveType.DeActive)
-            {
-                <i class="fa fa-times" style="color:dimgray"></i>
-            }
-            else if (profile.IsActive == IsActiveType.Block)
-            {
-                <i class="fa fa-ban" style="color: red"></i>
-            }
-            else
-            {
-                <i class="fa fa-minus"></i>
-            }
-            @profile.IsActive.DisplayName()
-        </td>
-        @*<td>@profile.TimeCreated</td>
-        <td>@profile.TimeEdited</td>*@
-        <td><a asp-action="Details" asp-route-id="@profile.Id" asp-controller="Profile" class="btn btn-info">Details</a></td>
-        <td><a asp-action="Edit" asp-route-id="@profile.Id" asp-controller="Profile" class="btn btn-primary">Edit</a></td>
+                </td>
+                <td>@profile.Age</td>
+                <td>@profile.Phone</td>
+                <td>
+                    @if (profile.IsActive == IsActiveType.Active)
+                    {
+                        <i class="fa fa-check" style="color:chartreuse"></i>
+                    }
+                    else if (profile.IsActive == IsActiveType.DeActive)
+                    {
+                        <i class="fa fa-times" style="color:dimgray"></i>
+                    }
+                    else if (profile.IsActive == IsActiveType.Block)
+                    {
+                        <i class="fa fa-ban" style="color: red"></i>
+                    }
+                    else
+                    {
+                        <i class="fa fa-minus"></i>
+                    }
+                    @profile.IsActive.DisplayName()
+                </td>
+                @*<td>@profile.TimeCreated</td>
+                    <td>@profile.TimeEdited</td>*@
+                <td><a asp-action="Details" asp-route-id="@profile.Id" asp-controller="Profile" class="btn btn-info">Details</a></td>
+                <td><a asp-action="Edit" asp-route-id="@profile.Id" asp-controller="Profile" class="btn btn-primary">Edit</a></td>
 
-    </tr>
-        i++;
-    }
-<tr>
-    <td colspan="3">
-        count: @Model.Count()
-    </td>
-</tr>
-</tbody>
+            </tr>
+            i++;
+        }
+        <tr>
+            <td colspan="3">
+                count: @Model.Count()
+            </td>
+        </tr>
+    </tbody>
 </table>
