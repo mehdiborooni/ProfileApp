@@ -28,7 +28,7 @@ namespace ProfileApp.Controllers
 
         [Route("/")]
         //[Route("profile/{sortBy?}/{term?}")]
-        public IActionResult Index(string sortByAsc= "", string sortByDsc = "", string term = "", string useractive="")
+        public IActionResult Index(string sortByAsc= "", string sortByDsc = "", string term = "", string term1 = "", string term2 = "")
         {
             IEnumerable<Profile> model;
 
@@ -40,9 +40,6 @@ namespace ProfileApp.Controllers
             {
                 model = _db.Profiles;
             }
-
-            
-            
 
 
             switch (sortByAsc)
@@ -114,6 +111,8 @@ namespace ProfileApp.Controllers
             }
 
             ViewData["term"] = term;
+            ViewData["term1"] = term1;
+            ViewData["term2"] = term2;
             ViewData["sortByAsc"] = sortByAsc;
             ViewData["sortByDsc"] = sortByDsc;
 

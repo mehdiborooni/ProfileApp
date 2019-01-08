@@ -14,18 +14,25 @@
         <i class="fa fa-plus"></i>
     </a>
 </div>
+
 <hr />
+
 <form method="get" class="form-inline" style="display: flex; justify-content: space-around; align-items: right; direction: rtl">
 
     <div style="display: flex; flex-direction: column">
 
         <div style="display: flex; align-items: center; margin: 5px 10px 5px 10px">
-            <p style="margin: 0 10px 0 10px; font-size: 20px">جستجو بر اساس نام کاربر :</p>
+            <p style="margin: 0 10px 0 10px; font-size: 18px">جستجو بر اساس نام کاربر :</p>
             <input name="term" class="form-control" style="width: 200px" value="@ViewData["term"]" />
         </div>
 
         <div style="display: flex; align-items: center; margin: 5px 10px 5px 10px">
-            <p style="margin: 0 10px 0 10px; font-size: 20px">جستجو بر اساس وضعیت کاربر :</p>
+            <p style="margin: 0 10px 0 10px; font-size: 18px">جستجو بر اساس نام خانوادگی کاربر :</p>
+            <input name="term" class="form-control" style="width: 200px" value="@ViewData["term1"]" />
+        </div>
+
+        <div style="display: flex; align-items: center; margin: 5px 10px 5px 10px">
+            <p style="margin: 0 10px 0 10px; font-size: 18px">جستجو بر اساس وضعیت کاربر :</p>
             <div style="display: flex; align-items: center" class="form-control">
 
                 <p style="margin: 0 10px 0 10px; font-size: 15px">کاربر فعال</p>
@@ -41,30 +48,30 @@
         </div>
 
         <div style="display: flex; align-items: center; margin: 5px 10px 5px 10px">
-            
-                <p style="margin: 0 10px 0 10px; font-size: 20px">جستجو بر اساس جنسیت کاربر :</p>
-                <div style="display: flex; align-items: center" class="form-control">
-                    
-                    <p style="margin: 0 10px 0 10px; font-size: 15px">مرد</p>
-                    <input type="checkbox" name="male" value="" />
 
-                    <p style="margin: 0 10px 0 10px; font-size: 15px">زن</p>
-                    <input type="checkbox" name="female" value="" />
-                    
-                </div>
-            
+            <p style="margin: 0 10px 0 10px; font-size: 18px">جستجو بر اساس جنسیت کاربر :</p>
+            <div style="display: flex; align-items: center" class="form-control">
+
+                <p style="margin: 0 10px 0 10px; font-size: 15px">مرد</p>
+                <input type="checkbox" name="male" value="" />
+
+                <p style="margin: 0 10px 0 10px; font-size: 15px">زن</p>
+                <input type="checkbox" name="female" value="" />
+
+            </div>
+
         </div>
 
         <div style="display: flex; align-items: center; margin: 5px 10px 5px 10px">
 
-            <p style="margin: 0 10px 0 10px; font-size: 20px">جستجو بر اساس سن :</p>
+            <p style="margin: 0 10px 0 10px; font-size: 18px">جستجو بر اساس سن :</p>
             <div style="display: flex; align-items: center" class="form-control">
 
                 <p style="margin: 0 10px 0 10px; font-size: 15px">از سن</p>
-                <input type="text" name="agestart" value="" style="width: 50px; height: 25px"/>
+                <input type="text" name="agestart" value="" style="width: 50px; height: 25px" />
 
                 <p style="margin: 0 10px 0 10px; font-size: 15px">تا سن</p>
-                <input type="text" name="ageend" value="" style="width: 50px; height: 25px"/>
+                <input type="text" name="ageend" value="" style="width: 50px; height: 25px" />
 
             </div>
         </div>
