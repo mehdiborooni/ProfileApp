@@ -36,12 +36,7 @@ namespace ProfileApp.Controllers
             {
               model = _db.Profiles.OrderBy(m => m.FirstName).Where(b => b.FirstName.Contains(term));
             }
-            else
-            {
-                model = _db.Profiles;
-            }
-
-            if (!string.IsNullOrEmpty(term1))
+            else if (!string.IsNullOrEmpty(term1))
             {
                 model = _db.Profiles.OrderBy(m => m.LastName).Where(b => b.LastName.Contains(term1));
             }
@@ -49,6 +44,9 @@ namespace ProfileApp.Controllers
             {
                 model = _db.Profiles;
             }
+
+            
+            
 
 
             switch (sortByAsc)
