@@ -29,29 +29,32 @@ namespace ProfileApp.Controllers
 
         [Route("/")]
         //[Route("profile/{sortBy?}/{term?}")]
-        public IActionResult Index(string sortByAsc= "", string sortByDsc = "", string term = "", string term1 = "", IsActiveType isActiveType=IsActiveType.Active)
+        public IActionResult Index(string sortByAsc= "", string sortByDsc = "", string term = "", string term1 = "", IsActiveType isActiveType=IsActiveType.all)
         {
             IEnumerable<Profile> model;
 
-            if (!string.IsNullOrEmpty(term1) && !string.IsNullOrEmpty(term))
+            if (!string.IsNullOrEmpty(term1) && !string.IsNullOrEmpty(term) && isActiveType != IsActiveType.all)
             {
-                model = _db.Profiles.OrderBy(m => m.LastName).Where(b => b.LastName.Contains(term1) && b.FirstName.Contains(term));
+                model = _db.Profiles.OrderBy(m => m.LastName).Where(b => b.LastName.Contains(term1) && b.FirstName.Contains(term) && b.IsActive == isActiveType);
             }
-            else if (!string.IsNullOrEmpty(term))
+            else if (!string.IsNullOrEmpty(term) && isActiveType != IsActiveType.all)
             {
-              model = _db.Profiles.OrderBy(m => m.FirstName).Where(b => b.FirstName.Contains(term));
+              model = _db.Profiles.OrderBy(m => m.FirstName).Where(b => b.FirstName.Contains(term) && b.IsActive == isActiveType);
             }
-            else if (!string.IsNullOrEmpty(term1))
+            else if (!string.IsNullOrEmpty(term1) && isActiveType != IsActiveType.all)
             {
-                model = _db.Profiles.OrderBy(m => m.LastName).Where(b => b.LastName.Contains(term1));
+                model = _db.Profiles.OrderBy(m => m.LastName).Where(b => b.LastName.Contains(term1) && b.IsActive == isActiveType);
+            }
+            else if (isActiveType != IsActiveType.all)
+            {
+                model = _db.Profiles.Where(p => p.IsActive == isActiveType);
             }
             else
             {
                 model = _db.Profiles;
             }
 
-            model = model.Where(p => p.IsActive == isActiveType);
-            
+           
 
 
             switch (sortByAsc)

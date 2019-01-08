@@ -33,9 +33,12 @@ namespace ProfileApp.Models
     }
     public enum IsActiveType
     {
-        None =0,
-        Active =1,
-        DeActive =2,
-        Block =3
+        all = 0,
+        None =1,
+        Active =2,
+        DeActive =3,
+        Block =4
+        
+        
     }
 }
