@@ -50,7 +50,7 @@ namespace ProfileApp.Controllers
                 model = _db.Profiles;
             }
 
-            model = _db.Profiles.Where(p => p.IsActive == isActiveType);
+            model = model.Where(p => p.IsActive == isActiveType);
             
 
 
@@ -132,6 +132,7 @@ namespace ProfileApp.Controllers
             vm.Term = term;
             return View(vm);
         }
+
         [Route("profile/create/{id?}")]
         [HttpGet]
         public IActionResult Create()
