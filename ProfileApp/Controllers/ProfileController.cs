@@ -41,6 +41,15 @@ namespace ProfileApp.Controllers
                 model = _db.Profiles;
             }
 
+            if (!string.IsNullOrEmpty(term1))
+            {
+                model = _db.Profiles.OrderBy(m => m.LastName).Where(b => b.LastName.Contains(term1));
+            }
+            else
+            {
+                model = _db.Profiles;
+            }
+
 
             switch (sortByAsc)
             {
