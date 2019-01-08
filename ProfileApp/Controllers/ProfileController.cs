@@ -32,7 +32,11 @@ namespace ProfileApp.Controllers
         {
             IEnumerable<Profile> model;
 
-            if (!string.IsNullOrEmpty(term))
+            if (!string.IsNullOrEmpty(term1) && !string.IsNullOrEmpty(term))
+            {
+                model = _db.Profiles.OrderBy(m => m.LastName).Where(b => b.LastName.Contains(term1) && b.FirstName.Contains(term));
+            }
+            else if (!string.IsNullOrEmpty(term))
             {
               model = _db.Profiles.OrderBy(m => m.FirstName).Where(b => b.FirstName.Contains(term));
             }
