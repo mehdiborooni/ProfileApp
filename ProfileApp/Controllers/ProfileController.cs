@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using ProfileApp.Data;
 using Microsoft.EntityFrameworkCore;
 using ProfileApp.Common;
+using ProfileApp.Filters;
 using ProfileApp.Models.Enums;
 
 namespace ProfileApp.Controllers
@@ -121,22 +122,18 @@ namespace ProfileApp.Controllers
             return View();
         }
 
-       
+        [ValidateModel]
         [HttpPost]
         public IActionResult Create(Profile model)
         {
-            if (ModelState.IsValid)
-            {
+            
                 model.TimeCreated = DateTime.Now;
 
                 _db.Profiles.Add(model);
                 _db.SaveChanges();
                 return RedirectToAction(nameof(Index));
-            }
-            else
-            {
-                return View(model);
-            }
+           
+           
         }
 
         [Route("profile/details/{id?}")]

@@ -9,6 +9,8 @@ namespace ProfileApp.Models
     public class Profile
     {
         public int Id { get; set; }
+        [Required]
+        [MaxLength(20)]
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Desc { get; set; }
