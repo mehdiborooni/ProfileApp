@@ -29,7 +29,7 @@ namespace ProfileApp.Controllers
 
         [Route("/")]
         //[Route("profile/{sortBy?}/{term?}")]
-        public IActionResult Index(string sortByAsc= "", string sortByDsc = "", string term = "", string term1 = "", string term2 = "")
+        public IActionResult Index(string sortByAsc= "", string sortByDsc = "", string term = "", string term1 = "", IsActiveType isActiveType=IsActiveType.Active)
         {
             IEnumerable<Profile> model;
 
@@ -50,7 +50,7 @@ namespace ProfileApp.Controllers
                 model = _db.Profiles;
             }
 
-            
+            model = _db.Profiles.Where(p => p.IsActive == isActiveType);
             
 
 
@@ -124,7 +124,7 @@ namespace ProfileApp.Controllers
 
             
             ViewData["term1"] = term1;
-            ViewData["term2"] = term2;
+            
             ViewData["sortByAsc"] = sortByAsc;
             ViewData["sortByDsc"] = sortByDsc;
             var vm = new ProfileViewModel();
