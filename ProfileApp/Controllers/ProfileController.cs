@@ -26,7 +26,7 @@ namespace ProfileApp.Controllers
 
         [Route("/")]
         //[Route("profile/{sortBy?}/{term?}")]
-        public IActionResult Index(string sortBy= "", string term="", SortOrderType orderType1=SortOrderType.Asc , SortOrderType orderType2= SortOrderType.Asc)
+        public IActionResult Index(string sortByAsc= "", string sortByDsc = "", string term="")
         {
             IEnumerable<Profile> model;
 
@@ -40,7 +40,7 @@ namespace ProfileApp.Controllers
             }
             
 
-            switch (sortBy)
+            switch (sortByAsc)
             {
                 case "FirstName":
                     {
@@ -74,38 +74,43 @@ namespace ProfileApp.Controllers
                     }
             }
 
+            switch (sortByDsc)
+            {
+                case "FirstName":
+                {
+                    model = model.OrderBy(m => m.FirstName).Reverse();
+                    break;
+                }
+                case "LastName":
+                {
+                    model = model.OrderBy(m => m.LastName).Reverse();
+                    break;
+                }
+                case "Gender":
+                {
+                    model = model.OrderBy(m => m.Gender).Reverse();
+                    break;
+                }
+                case "Age":
+                {
+                    model = model.OrderBy(m => m.Age).Reverse();
+                    break;
+                }
+                case "IsActive":
+                {
+                    model = model.OrderBy(m => m.IsActive).Reverse();
+                    break;
+                }
+                default:
+                {
+
+                    break;
+                }
+            }
+
             ViewData["term"] = term;
-            ViewData["sortBy"] = sortBy;
-
-
-
-            //if (orderType==SortOrderType.Dsc)
-            //{
-            //    model = model.Reverse();
-            //    orderType = SortOrderType.Asc;
-            //}
-            //else
-            //{
-            //    orderType = SortOrderType.Dsc;
-            //}
-
-
-            if (orderType1 == SortOrderType.Dsc)
-            {
-                orderType1 = SortOrderType.Asc;
-                
-                model = model.Reverse();
-                orderType2 = SortOrderType.Asc;
-            }
-            else
-            {
-                orderType1 = SortOrderType.Dsc;
-                orderType2 = SortOrderType.Dsc;
-            }
-
-            
-            ViewData["orderType1"] = orderType1;
-            ViewData["orderType2"] = orderType2;
+            ViewData["sortByAsc"] = sortByAsc;
+            ViewData["sortByDsc"] = sortByDsc;
 
             return View(model);
         }

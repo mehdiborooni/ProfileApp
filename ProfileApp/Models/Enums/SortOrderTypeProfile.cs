@@ -5,9 +5,13 @@ using System.Threading.Tasks;
 
 namespace ProfileApp.Models.Enums
 {
-    public enum SortOrderType
+    public enum SortOrderTypeProfile
     {
-        Asc = 0,
-        Dsc = 1
+        FirstName = 0,
+        Lastname = 1,
+        Gender = 2,
+        Age = 3,
+        IsActive = 4
+
     }
 }
