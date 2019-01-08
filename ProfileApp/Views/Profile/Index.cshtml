@@ -1,7 +1,7 @@
 ﻿
 @using Microsoft.AspNetCore.Mvc.Razor.Internal
 @using ProfileApp.Common
-@model IEnumerable<ProfileApp.Models.Profile>
+@model ProfileViewModel
 
 @{
     var i = 1;
@@ -23,7 +23,7 @@
 
         <div style="display: flex; align-items: center; margin: 5px 10px 5px 10px">
             <p style="margin: 0 10px 0 10px; font-size: 18px">جستجو بر اساس نام کاربر :</p>
-            <input name="term" class="form-control" style="width: 200px" value="@ViewData["term"]" />
+            <input name="term" class="form-control" style="width: 200px" value="@Model.Term" />
         </div>
 
         <div style="display: flex; align-items: center; margin: 5px 10px 5px 10px">
@@ -33,18 +33,7 @@
 
         <div style="display: flex; align-items: center; margin: 5px 10px 5px 10px">
             <p style="margin: 0 10px 0 10px; font-size: 18px">جستجو بر اساس وضعیت کاربر :</p>
-            <div style="display: flex; align-items: center" class="form-control">
-
-                <p style="margin: 0 10px 0 10px; font-size: 15px">کاربر فعال</p>
-                <input type="checkbox" name="active" value="" />
-
-                <p style="margin: 0 10px 0 10px; font-size: 15px">کاربر غیر فعال</p>
-                <input type="checkbox" name="deactive" value="" />
-
-                <p style="margin: 0 10px 0 10px; font-size: 15px">کاربر مسدود</p>
-                <input type="checkbox" name="block" value="" />
-
-            </div>
+            <select  asp-items="Html.GetEnumSelectList<IsActiveType>()" class="form-control" placeholder="IsActive"></select>
         </div>
 
         <div style="display: flex; align-items: center; margin: 5px 10px 5px 10px">
@@ -121,7 +110,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var profile in Model)
+        @foreach (var profile in Model.Users)
 
         {
             <tr>
@@ -175,7 +164,7 @@
         }
         <tr>
             <td colspan="3">
-                count: @Model.Count()
+                count: @Model.Users.Count()
             </td>
         </tr>
     </tbody>

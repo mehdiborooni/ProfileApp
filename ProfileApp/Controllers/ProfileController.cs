@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using System.Reflection.Metadata;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -121,13 +122,15 @@ namespace ProfileApp.Controllers
                 }
             }
 
-            ViewData["term"] = term;
+            
             ViewData["term1"] = term1;
             ViewData["term2"] = term2;
             ViewData["sortByAsc"] = sortByAsc;
             ViewData["sortByDsc"] = sortByDsc;
-
-            return View(model);
+            var vm = new ProfileViewModel();
+            vm.Users = model;
+            vm.Term = term;
+            return View(vm);
         }
         [Route("profile/create/{id?}")]
         [HttpGet]
