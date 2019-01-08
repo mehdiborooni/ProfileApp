@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using ProfileApp.Data;
 using Microsoft.EntityFrameworkCore;
 using ProfileApp.Common;
@@ -27,7 +28,7 @@ namespace ProfileApp.Controllers
 
         [Route("/")]
         //[Route("profile/{sortBy?}/{term?}")]
-        public IActionResult Index(string sortByAsc= "", string sortByDsc = "", string term="")
+        public IActionResult Index(string sortByAsc= "", string sortByDsc = "", string term = "", string useractive="")
         {
             IEnumerable<Profile> model;
 
@@ -39,7 +40,10 @@ namespace ProfileApp.Controllers
             {
                 model = _db.Profiles;
             }
+
             
+            
+
 
             switch (sortByAsc)
             {

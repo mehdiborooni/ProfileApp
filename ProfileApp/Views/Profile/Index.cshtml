@@ -6,31 +6,74 @@
 @{
     var i = 1;
 }
-<h2>ProfileIndex</h2>
+
+<div style="display: flex; justify-content: space-between">
+    <h2>ProfileIndex</h2>
+    <a asp-action="Create" asp-controller="Profile" class="btn btn-dark">
+        Create User
+        <i class="fa fa-plus"></i>
+    </a>
+</div>
 <hr />
-<form method="get" class="form-inline" >
-    <input name="sortBy" value="@ViewData["sortBy"]" hidden="" />
-    <input name="sortBy2" value="@ViewData["sortBy2"]" hidden="" />
-    <p style="margin: 0 10px 0 10px; font-size: 20px">نام کاربر :</p>
-    <input name="term" class="form-control" style="width: 200px" value="@ViewData["term"]" />
-    <div style="display: flex; align-items: center; margin: 0 10px 0 10px" class="form-control">
-        <p style="margin: 0 10px 0 10px; font-size: 20px">جستجو بر اساس وضعیت کاربر :</p>
-        <div style="display: flex; align-items: center">
-            <p style="margin: 0 10px 0 10px; font-size: 15px">کاربر فعال</p>
-            <input type="checkbox" name="active" value="active" />
-            <p style="margin: 0 10px 0 10px; font-size: 15px">کاربر غیر فعال</p>
-            <input type="checkbox" name="deactive" value="deactive" />
-            <p style="margin: 0 10px 0 10px; font-size: 15px">کاربر مسدود</p>
-            <input type="checkbox" name="block" value="block" />
+<form method="get" class="form-inline" style="display: flex; justify-content: space-around; align-items: right; direction: rtl">
+
+    <div style="display: flex; flex-direction: column">
+
+        <div style="display: flex; align-items: center; margin: 5px 10px 5px 10px">
+            <p style="margin: 0 10px 0 10px; font-size: 20px">جستجو بر اساس نام کاربر :</p>
+            <input name="term" class="form-control" style="width: 200px" value="@ViewData["term"]" />
         </div>
+
+        <div style="display: flex; align-items: center; margin: 5px 10px 5px 10px">
+            <p style="margin: 0 10px 0 10px; font-size: 20px">جستجو بر اساس وضعیت کاربر :</p>
+            <div style="display: flex; align-items: center" class="form-control">
+
+                <p style="margin: 0 10px 0 10px; font-size: 15px">کاربر فعال</p>
+                <input type="checkbox" name="active" value="" />
+
+                <p style="margin: 0 10px 0 10px; font-size: 15px">کاربر غیر فعال</p>
+                <input type="checkbox" name="deactive" value="" />
+
+                <p style="margin: 0 10px 0 10px; font-size: 15px">کاربر مسدود</p>
+                <input type="checkbox" name="block" value="" />
+
+            </div>
+        </div>
+
+        <div style="display: flex; align-items: center; margin: 5px 10px 5px 10px">
+            
+                <p style="margin: 0 10px 0 10px; font-size: 20px">جستجو بر اساس جنسیت کاربر :</p>
+                <div style="display: flex; align-items: center" class="form-control">
+                    
+                    <p style="margin: 0 10px 0 10px; font-size: 15px">مرد</p>
+                    <input type="checkbox" name="male" value="" />
+
+                    <p style="margin: 0 10px 0 10px; font-size: 15px">زن</p>
+                    <input type="checkbox" name="female" value="" />
+                    
+                </div>
+            
+        </div>
+
+        <div style="display: flex; align-items: center; margin: 5px 10px 5px 10px">
+
+            <p style="margin: 0 10px 0 10px; font-size: 20px">جستجو بر اساس سن :</p>
+            <div style="display: flex; align-items: center" class="form-control">
+
+                <p style="margin: 0 10px 0 10px; font-size: 15px">از سن</p>
+                <input type="text" name="agestart" value="" style="width: 50px; height: 25px"/>
+
+                <p style="margin: 0 10px 0 10px; font-size: 15px">تا سن</p>
+                <input type="text" name="ageend" value="" style="width: 50px; height: 25px"/>
+
+            </div>
+        </div>
+
     </div>
+
     <button type="submit" class="btn btn-primary" style="margin-left: 10px">Search</button>
+
 </form>
-<hr />
-<a asp-action="Create" asp-controller="Profile" class="btn btn-dark">
-    Create
-    <i class="fa fa-plus"></i>
-</a>
 <hr />
 
 
