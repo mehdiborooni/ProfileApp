@@ -29,21 +29,33 @@ namespace ProfileApp.Controllers
 
         [Route("/")]
         //[Route("profile/{sortBy?}/{term?}")]
-        public IActionResult Index(string sortByAsc= "", string sortByDsc = "", string term = "", string term1 = "", IsActiveType isActiveType=IsActiveType.all)
+        public IActionResult Index(string sortByAsc= "", string sortByDsc = "", string fName = "", string lName = "", IsActiveType isActiveType=IsActiveType.all)
         {
             IEnumerable<Profile> model;
 
-            if (!string.IsNullOrEmpty(term1) && !string.IsNullOrEmpty(term) && isActiveType != IsActiveType.all)
+            if (!string.IsNullOrEmpty(lName) && !string.IsNullOrEmpty(fName) && isActiveType != IsActiveType.all)
             {
-                model = _db.Profiles.OrderBy(m => m.LastName).Where(b => b.LastName.Contains(term1) && b.FirstName.Contains(term) && b.IsActive == isActiveType);
+                model = _db.Profiles.Where(b => b.LastName.Contains(lName) && b.FirstName.Contains(fName) && b.IsActive == isActiveType);
             }
-            else if (!string.IsNullOrEmpty(term) && isActiveType != IsActiveType.all)
+            else if (!string.IsNullOrEmpty(lName) && !string.IsNullOrEmpty(fName))
             {
-              model = _db.Profiles.OrderBy(m => m.FirstName).Where(b => b.FirstName.Contains(term) && b.IsActive == isActiveType);
+                model = _db.Profiles.Where(b => b.LastName.Contains(lName) && b.FirstName.Contains(fName));
             }
-            else if (!string.IsNullOrEmpty(term1) && isActiveType != IsActiveType.all)
+            else if (!string.IsNullOrEmpty(fName) && isActiveType != IsActiveType.all)
             {
-                model = _db.Profiles.OrderBy(m => m.LastName).Where(b => b.LastName.Contains(term1) && b.IsActive == isActiveType);
+              model = _db.Profiles.Where(b => b.FirstName.Contains(fName) && b.IsActive == isActiveType);
+            }
+            else if (!string.IsNullOrEmpty(lName) && isActiveType != IsActiveType.all)
+            {
+                model = _db.Profiles.Where(b => b.LastName.Contains(lName) && b.IsActive == isActiveType);
+            }
+            else if (!string.IsNullOrEmpty(fName))
+            {
+                model = _db.Profiles.Where(b => b.FirstName.Contains(fName));
+            }
+            else if (!string.IsNullOrEmpty(lName))
+            {
+                model = _db.Profiles.Where(b => b.LastName.Contains(lName));
             }
             else if (isActiveType != IsActiveType.all)
             {
@@ -126,13 +138,11 @@ namespace ProfileApp.Controllers
             }
 
             
-            ViewData["term1"] = term1;
+            
             
             ViewData["sortByAsc"] = sortByAsc;
             ViewData["sortByDsc"] = sortByDsc;
-            var vm = new ProfileViewModel();
-            vm.Users = model;
-            vm.Term = term;
+            var vm = new ProfileViewModel {Users = model, FName = fName, LName = lName};
             return View(vm);
         }
 

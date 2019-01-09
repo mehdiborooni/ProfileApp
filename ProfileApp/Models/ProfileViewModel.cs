@@ -9,7 +9,8 @@ namespace ProfileApp.Models
     {
         public IEnumerable<ProfileApp.Models.Profile> Users { get; set; }
         public IsActiveType IsActiveType { get; set; }
-        public string Term { get; set; }
+        public string FName { get; set; }
+        public string LName { get; set; }
     }
 
 }
