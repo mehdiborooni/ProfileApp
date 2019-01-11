@@ -29,11 +29,11 @@ namespace ProfileApp.Controllers
 
         [Route("/")]
         //[Route("profile/{sortBy?}/{term?}")]
-        public IActionResult Index(string sortByAsc= "", string sortByDsc = "", string fName = "", string lName = "", IsActiveType isActiveType=IsActiveType.all)
+        public IActionResult Index(string sortByAsc= "", string sortByDsc = "", string fName = "", string lName = "", IsActiveType isActiveType=IsActiveType.All)
         {
             IEnumerable<Profile> model;
 
-            if (!string.IsNullOrEmpty(lName) && !string.IsNullOrEmpty(fName) && isActiveType != IsActiveType.all)
+            if (!string.IsNullOrEmpty(lName) && !string.IsNullOrEmpty(fName) && isActiveType != IsActiveType.All)
             {
                 model = _db.Profiles.Where(b => b.LastName.Contains(lName) && b.FirstName.Contains(fName) && b.IsActive == isActiveType);
             }
@@ -41,11 +41,11 @@ namespace ProfileApp.Controllers
             {
                 model = _db.Profiles.Where(b => b.LastName.Contains(lName) && b.FirstName.Contains(fName));
             }
-            else if (!string.IsNullOrEmpty(fName) && isActiveType != IsActiveType.all)
+            else if (!string.IsNullOrEmpty(fName) && isActiveType != IsActiveType.All)
             {
               model = _db.Profiles.Where(b => b.FirstName.Contains(fName) && b.IsActive == isActiveType);
             }
-            else if (!string.IsNullOrEmpty(lName) && isActiveType != IsActiveType.all)
+            else if (!string.IsNullOrEmpty(lName) && isActiveType != IsActiveType.All)
             {
                 model = _db.Profiles.Where(b => b.LastName.Contains(lName) && b.IsActive == isActiveType);
             }
@@ -57,7 +57,7 @@ namespace ProfileApp.Controllers
             {
                 model = _db.Profiles.Where(b => b.LastName.Contains(lName));
             }
-            else if (isActiveType != IsActiveType.all)
+            else if (isActiveType != IsActiveType.All)
             {
                 model = _db.Profiles.Where(p => p.IsActive == isActiveType);
             }

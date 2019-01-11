@@ -33,7 +33,7 @@ namespace ProfileApp.Models
     }
     public enum IsActiveType
     {
-        all = 0,
+        All = 0,
         None =1,
         Active =2,
         DeActive =3,

@@ -35,10 +35,7 @@
         <div style="display: flex; align-items: center; margin: 5px 10px 5px 10px">
             <p style="margin: 0 10px 0 10px; font-size: 18px">جستجو بر اساس وضعیت کاربر :</p>
             <select 
-                asp-for="IsActiveType"
-               
-                
-                asp-items="Html.GetEnumSelectList<IsActiveType>()" class="form-control" placeholder="IsActive"></select>
+                asp-for="IsActiveType" name="isActiveType" asp-items="Html.GetEnumSelectList<IsActiveType>()" class="form-control" placeholder="IsActive"></select>
         </div>
 
         <div style="display: flex; align-items: center; margin: 5px 10px 5px 10px">
