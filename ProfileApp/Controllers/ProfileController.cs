@@ -37,6 +37,70 @@ namespace ProfileApp.Controllers
             {
                 model = _db.Profiles.Where(b => b.LastName.Contains(lName) && b.FirstName.Contains(fName) && b.IsActive == isActiveType && b.Gender == genderType && Convert.ToInt32(b.Age) >= Convert.ToInt32(startAge)  && Convert.ToInt32(b.Age) <= Convert.ToInt32(endAge));
             }
+            else if (!string.IsNullOrEmpty(lName) && !string.IsNullOrEmpty(fName) && isActiveType != IsActiveType.All && !string.IsNullOrEmpty(startAge.ToString()) && !string.IsNullOrEmpty(endAge.ToString()))
+            {
+                model = _db.Profiles.Where(b => b.LastName.Contains(lName) && b.FirstName.Contains(fName) && b.IsActive == isActiveType && Convert.ToInt32(b.Age) >= Convert.ToInt32(startAge) && Convert.ToInt32(b.Age) <= Convert.ToInt32(endAge));
+            }
+            else if (!string.IsNullOrEmpty(lName) && !string.IsNullOrEmpty(fName) && genderType != GenderType.All && !string.IsNullOrEmpty(startAge.ToString()) && !string.IsNullOrEmpty(endAge.ToString()))
+            {
+                model = _db.Profiles.Where(b => b.LastName.Contains(lName) && b.FirstName.Contains(fName) && b.Gender == genderType && Convert.ToInt32(b.Age) >= Convert.ToInt32(startAge) && Convert.ToInt32(b.Age) <= Convert.ToInt32(endAge));
+            }
+            else if (!string.IsNullOrEmpty(fName) && isActiveType != IsActiveType.All && genderType != GenderType.All && !string.IsNullOrEmpty(startAge.ToString()) && !string.IsNullOrEmpty(endAge.ToString()))
+            {
+                model = _db.Profiles.Where(b => b.FirstName.Contains(fName) && b.IsActive == isActiveType && b.Gender == genderType && Convert.ToInt32(b.Age) >= Convert.ToInt32(startAge) && Convert.ToInt32(b.Age) <= Convert.ToInt32(endAge));
+            }
+            else if (!string.IsNullOrEmpty(lName) && isActiveType != IsActiveType.All && genderType != GenderType.All && !string.IsNullOrEmpty(startAge.ToString()) && !string.IsNullOrEmpty(endAge.ToString()))
+            {
+                model = _db.Profiles.Where(b => b.LastName.Contains(lName) && b.IsActive == isActiveType && b.Gender == genderType && Convert.ToInt32(b.Age) >= Convert.ToInt32(startAge) && Convert.ToInt32(b.Age) <= Convert.ToInt32(endAge));
+            }
+            else if (!string.IsNullOrEmpty(lName) && !string.IsNullOrEmpty(fName) && !string.IsNullOrEmpty(startAge.ToString()) && !string.IsNullOrEmpty(endAge.ToString()))
+            {
+                model = _db.Profiles.Where(b => b.LastName.Contains(lName) && b.FirstName.Contains(fName) && Convert.ToInt32(b.Age) >= Convert.ToInt32(startAge) && Convert.ToInt32(b.Age) <= Convert.ToInt32(endAge));
+            }
+            else if (!string.IsNullOrEmpty(fName) && isActiveType != IsActiveType.All && !string.IsNullOrEmpty(startAge.ToString()) && !string.IsNullOrEmpty(endAge.ToString()))
+            {
+              model = _db.Profiles.Where(b => b.FirstName.Contains(fName) && b.IsActive == isActiveType && Convert.ToInt32(b.Age) >= Convert.ToInt32(startAge) && Convert.ToInt32(b.Age) <= Convert.ToInt32(endAge));
+            }
+            else if (!string.IsNullOrEmpty(lName) && isActiveType != IsActiveType.All && !string.IsNullOrEmpty(startAge.ToString()) && !string.IsNullOrEmpty(endAge.ToString()))
+            {
+                model = _db.Profiles.Where(b => b.LastName.Contains(lName) && b.IsActive == isActiveType && Convert.ToInt32(b.Age) >= Convert.ToInt32(startAge) && Convert.ToInt32(b.Age) <= Convert.ToInt32(endAge));
+            }
+            else if (!string.IsNullOrEmpty(fName) && genderType != GenderType.All && !string.IsNullOrEmpty(startAge.ToString()) && !string.IsNullOrEmpty(endAge.ToString()))
+            {
+                model = _db.Profiles.Where(b => b.FirstName.Contains(fName) && b.Gender == genderType && Convert.ToInt32(b.Age) >= Convert.ToInt32(startAge) && Convert.ToInt32(b.Age) <= Convert.ToInt32(endAge));
+            }
+            else if (!string.IsNullOrEmpty(lName) && genderType != GenderType.All && !string.IsNullOrEmpty(startAge.ToString()) && !string.IsNullOrEmpty(endAge.ToString()))
+            {
+                model = _db.Profiles.Where(b => b.LastName.Contains(lName) && b.Gender == genderType && Convert.ToInt32(b.Age) >= Convert.ToInt32(startAge) && Convert.ToInt32(b.Age) <= Convert.ToInt32(endAge));
+            }
+            else if (isActiveType != IsActiveType.All && genderType != GenderType.All && !string.IsNullOrEmpty(startAge.ToString()) && !string.IsNullOrEmpty(endAge.ToString()))
+            {
+                model = _db.Profiles.Where(b => b.IsActive == isActiveType && b.Gender == genderType && Convert.ToInt32(b.Age) >= Convert.ToInt32(startAge) && Convert.ToInt32(b.Age) <= Convert.ToInt32(endAge));
+            }
+            else if (!string.IsNullOrEmpty(fName) && !string.IsNullOrEmpty(startAge.ToString()) && !string.IsNullOrEmpty(endAge.ToString()))
+            {
+                model = _db.Profiles.Where(b => b.FirstName.Contains(fName) && Convert.ToInt32(b.Age) >= Convert.ToInt32(startAge) && Convert.ToInt32(b.Age) <= Convert.ToInt32(endAge));
+            }
+            else if (!string.IsNullOrEmpty(lName) && !string.IsNullOrEmpty(startAge.ToString()) && !string.IsNullOrEmpty(endAge.ToString()))
+            {
+                model = _db.Profiles.Where(b => b.LastName.Contains(lName) && Convert.ToInt32(b.Age) >= Convert.ToInt32(startAge) && Convert.ToInt32(b.Age) <= Convert.ToInt32(endAge));
+            }
+            else if (isActiveType != IsActiveType.All && !string.IsNullOrEmpty(startAge.ToString()) && !string.IsNullOrEmpty(endAge.ToString()))
+            {
+                model = _db.Profiles.Where(b => b.IsActive == isActiveType && Convert.ToInt32(b.Age) >= Convert.ToInt32(startAge) && Convert.ToInt32(b.Age) <= Convert.ToInt32(endAge));
+            }
+            else if (genderType != GenderType.All && !string.IsNullOrEmpty(startAge.ToString()) && !string.IsNullOrEmpty(endAge.ToString()))
+            {
+                model = _db.Profiles.Where(b => b.Gender == genderType && Convert.ToInt32(b.Age) >= Convert.ToInt32(startAge) && Convert.ToInt32(b.Age) <= Convert.ToInt32(endAge));
+            }
+            else if (!string.IsNullOrEmpty(startAge.ToString()) && !string.IsNullOrEmpty(endAge.ToString()))
+            {
+                model = _db.Profiles.Where(b => Convert.ToInt32(b.Age) >= Convert.ToInt32(startAge) && Convert.ToInt32(b.Age) <= Convert.ToInt32(endAge));
+            }
+            else if (!string.IsNullOrEmpty(lName) && !string.IsNullOrEmpty(fName) && isActiveType != IsActiveType.All && genderType != GenderType.All)
+            {
+                model = _db.Profiles.Where(b => b.LastName.Contains(lName) && b.FirstName.Contains(fName) && b.IsActive == isActiveType && b.Gender == genderType);
+            }
             else if (!string.IsNullOrEmpty(lName) && !string.IsNullOrEmpty(fName) && isActiveType != IsActiveType.All)
             {
                 model = _db.Profiles.Where(b => b.LastName.Contains(lName) && b.FirstName.Contains(fName) && b.IsActive == isActiveType);
@@ -59,7 +123,7 @@ namespace ProfileApp.Controllers
             }
             else if (!string.IsNullOrEmpty(fName) && isActiveType != IsActiveType.All)
             {
-              model = _db.Profiles.Where(b => b.FirstName.Contains(fName) && b.IsActive == isActiveType);
+                model = _db.Profiles.Where(b => b.FirstName.Contains(fName) && b.IsActive == isActiveType);
             }
             else if (!string.IsNullOrEmpty(lName) && isActiveType != IsActiveType.All)
             {
