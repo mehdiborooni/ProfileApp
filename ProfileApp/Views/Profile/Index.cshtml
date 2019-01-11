@@ -34,7 +34,11 @@
 
         <div style="display: flex; align-items: center; margin: 5px 10px 5px 10px">
             <p style="margin: 0 10px 0 10px; font-size: 18px">جستجو بر اساس وضعیت کاربر :</p>
-            <select name="isActiveType" asp-for="IsActiveType"  asp-items="Html.GetEnumSelectList<IsActiveType>()" class="form-control" placeholder="IsActive"></select>
+            <select 
+                asp-for="IsActiveType"
+               
+                
+                asp-items="Html.GetEnumSelectList<IsActiveType>()" class="form-control" placeholder="IsActive"></select>
         </div>
 
         <div style="display: flex; align-items: center; margin: 5px 10px 5px 10px">
@@ -88,40 +92,46 @@
                 <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="FirstName" 
                    asp-route-fName="@Model.FName" 
                    asp-route-lName="@Model.LName" 
-                   asp-route-isActiveType="IsActiveType"
+                   asp-route-isActiveType="@Model.IsActiveType"
                    style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
             </th>
             <th>
                 <a asp-action="Index" asp-controller="Profile" asp-route-sortByAsc="LastName" 
                    asp-route-fName="@Model.FName" 
                    asp-route-lName="@Model.LName" 
+                   asp-route-isActiveType="@Model.IsActiveType"
                    style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
                 LastName
                 <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="LastName" 
                    asp-route-fName="@Model.FName" 
                    asp-route-lName="@Model.LName"  
+                   asp-route-isActiveType="@Model.IsActiveType"
                    style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
             </th>
             <th>
                 <a asp-action="Index" asp-controller="Profile" asp-route-sortByAsc="Gender" 
                    asp-route-fName="@Model.FName" 
                    asp-route-lName="@Model.LName" 
+                   asp-route-isActiveType="@Model.IsActiveType"
                    style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
                 Gender
                 <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="Gender" 
                    asp-route-fName="@Model.FName" 
                    asp-route-lName="@Model.LName" 
+                   asp-route-isActiveType="@Model.IsActiveType"
                    style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
             </th>
             <th>
                 <a asp-action="Index" asp-controller="Profile" asp-route-sortByAsc="Age" 
                    asp-route-fName="@Model.FName" 
                    asp-route-lName="@Model.LName" 
+                   asp-route-isActiveType="@Model.IsActiveType"
                    style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
                 Age
                 <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="Age" 
                    asp-route-fName="@Model.FName" 
                    asp-route-lName="@Model.LName"  
+                   asp-route-isActiveType="@Model.IsActiveType"
                    style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
             </th>
             <th>Phone</th>
@@ -129,11 +139,13 @@
                 <a asp-action="Index" asp-controller="Profile" asp-route-sortByAsc="IsActive" 
                    asp-route-fName="@Model.FName" 
                    asp-route-lName="@Model.LName" 
+                   asp-route-isActiveType="@Model.IsActiveType"
                    style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
                 IsActive
                 <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="IsActive" 
                    asp-route-fName="@Model.FName" 
                    asp-route-lName="@Model.LName" 
+                   asp-route-isActiveType="@Model.IsActiveType"
                    style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
             </th>
             @*<th>TimeCreated</th>

@@ -142,7 +142,7 @@ namespace ProfileApp.Controllers
             
             ViewData["sortByAsc"] = sortByAsc;
             ViewData["sortByDsc"] = sortByDsc;
-            var vm = new ProfileViewModel {Users = model, FName = fName, LName = lName};
+            var vm = new ProfileViewModel {Users = model, FName = fName, LName = lName, IsActiveType = isActiveType };
             return View(vm);
         }
 
