@@ -41,15 +41,6 @@
 
             <p style="margin: 0 10px 0 10px; font-size: 18px">جستجو بر اساس جنسیت کاربر :</p>
             <select asp-for="GenderType" name="genderType" asp-items="Html.GetEnumSelectList<GenderType>()" class="form-control" placeholder="IsActive"></select>
-            @*<div style="display: flex; align-items: center" class="form-control">
-
-            <p style="margin: 0 10px 0 10px; font-size: 15px">مرد</p>
-            <input type="checkbox" name="male" value="" />
-
-            <p style="margin: 0 10px 0 10px; font-size: 15px">زن</p>
-            <input type="checkbox" name="female" value="" />
-
-        </div>*@
 
         </div>
 
@@ -84,12 +75,14 @@
                    asp-route-fName="@Model.FName" 
                    asp-route-lName="@Model.LName" 
                    asp-route-isActiveType="@Model.IsActiveType"
+                   asp-route-genderType="@Model.GenderType"
                    style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
                 FirstName
                 <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="FirstName" 
                    asp-route-fName="@Model.FName" 
                    asp-route-lName="@Model.LName" 
                    asp-route-isActiveType="@Model.IsActiveType"
+                   asp-route-genderType="@Model.GenderType"
                    style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
             </th>
             <th>
@@ -97,12 +90,14 @@
                    asp-route-fName="@Model.FName" 
                    asp-route-lName="@Model.LName" 
                    asp-route-isActiveType="@Model.IsActiveType"
+                   asp-route-genderType="@Model.GenderType"
                    style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
                 LastName
                 <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="LastName" 
                    asp-route-fName="@Model.FName" 
                    asp-route-lName="@Model.LName"  
                    asp-route-isActiveType="@Model.IsActiveType"
+                   asp-route-genderType="@Model.GenderType"
                    style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
             </th>
             <th>
@@ -110,12 +105,14 @@
                    asp-route-fName="@Model.FName" 
                    asp-route-lName="@Model.LName" 
                    asp-route-isActiveType="@Model.IsActiveType"
+                   asp-route-genderType="@Model.GenderType"
                    style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
                 Gender
                 <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="Gender" 
                    asp-route-fName="@Model.FName" 
                    asp-route-lName="@Model.LName" 
                    asp-route-isActiveType="@Model.IsActiveType"
+                   asp-route-genderType="@Model.GenderType"
                    style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
             </th>
             <th>
@@ -123,12 +120,14 @@
                    asp-route-fName="@Model.FName" 
                    asp-route-lName="@Model.LName" 
                    asp-route-isActiveType="@Model.IsActiveType"
+                   asp-route-genderType="@Model.GenderType"
                    style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
                 Age
                 <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="Age" 
                    asp-route-fName="@Model.FName" 
                    asp-route-lName="@Model.LName"  
                    asp-route-isActiveType="@Model.IsActiveType"
+                   asp-route-genderType="@Model.GenderType"
                    style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
             </th>
             <th>Phone</th>
@@ -137,12 +136,14 @@
                    asp-route-fName="@Model.FName" 
                    asp-route-lName="@Model.LName" 
                    asp-route-isActiveType="@Model.IsActiveType"
+                   asp-route-genderType="@Model.GenderType"
                    style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
                 IsActive
                 <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="IsActive" 
                    asp-route-fName="@Model.FName" 
                    asp-route-lName="@Model.LName" 
                    asp-route-isActiveType="@Model.IsActiveType"
+                   asp-route-genderType="@Model.GenderType"
                    style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
             </th>
             @*<th>TimeCreated</th>
