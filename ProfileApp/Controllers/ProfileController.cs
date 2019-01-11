@@ -29,13 +29,13 @@ namespace ProfileApp.Controllers
 
         [Route("/")]
         //[Route("profile/{sortBy?}/{term?}")]
-        public IActionResult Index(string sortByAsc= "", string sortByDsc = "", string fName = "", string lName = "", IsActiveType isActiveType=IsActiveType.All , GenderType genderType = GenderType.All)
+        public IActionResult Index(string sortByAsc= "", string sortByDsc = "", string fName = "", string lName = "", IsActiveType isActiveType=IsActiveType.All , GenderType genderType = GenderType.All, string age="" , string startAge ="" , string endAge ="")
         {
             IEnumerable<Profile> model;
 
-            if (!string.IsNullOrEmpty(lName) && !string.IsNullOrEmpty(fName) && isActiveType != IsActiveType.All && genderType != GenderType.All)
+            if (!string.IsNullOrEmpty(lName) && !string.IsNullOrEmpty(fName) && isActiveType != IsActiveType.All && genderType != GenderType.All && !string.IsNullOrEmpty(startAge.ToString()) && !string.IsNullOrEmpty(endAge.ToString()))
             {
-                model = _db.Profiles.Where(b => b.LastName.Contains(lName) && b.FirstName.Contains(fName) && b.IsActive == isActiveType && b.Gender == genderType);
+                model = _db.Profiles.Where(b => b.LastName.Contains(lName) && b.FirstName.Contains(fName) && b.IsActive == isActiveType && b.Gender == genderType && Convert.ToInt32(b.Age) >= Convert.ToInt32(startAge)  && Convert.ToInt32(b.Age) <= Convert.ToInt32(endAge));
             }
             else if (!string.IsNullOrEmpty(lName) && !string.IsNullOrEmpty(fName) && isActiveType != IsActiveType.All)
             {
@@ -174,7 +174,7 @@ namespace ProfileApp.Controllers
             
             ViewData["sortByAsc"] = sortByAsc;
             ViewData["sortByDsc"] = sortByDsc;
-            var vm = new ProfileViewModel {Users = model, FName = fName, LName = lName, IsActiveType = isActiveType , GenderType = genderType};
+            var vm = new ProfileViewModel {Users = model, FName = fName, LName = lName, IsActiveType = isActiveType , GenderType = genderType, StartAge = startAge , EndAge = endAge};
             return View(vm);
         }
 

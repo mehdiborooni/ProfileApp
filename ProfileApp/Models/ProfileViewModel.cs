@@ -12,6 +12,8 @@ namespace ProfileApp.Models
         public string FName { get; set; }
         public string LName { get; set; }
         public GenderType GenderType { get; set; }
+        public string StartAge { get; set; }
+        public string EndAge { get; set; }
     }
 
 }

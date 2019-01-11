@@ -38,7 +38,6 @@ namespace ProfileApp.Models
         Active =2,
         DeActive =3,
         Block =4
-        
-        
     }
+    
 }
