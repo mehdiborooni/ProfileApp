@@ -24,8 +24,8 @@ namespace ProfileApp.Models
     }
     public enum GenderType 
     {
-        [Display(Name = "-")]
-        None =0,
+        [Display(Name = "همه")]
+        All =0,
         [Display(Name="مرد")]
         Male=1,
         [Display(Name = "زن")]

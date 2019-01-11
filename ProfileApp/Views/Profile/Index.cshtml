@@ -34,22 +34,22 @@
 
         <div style="display: flex; align-items: center; margin: 5px 10px 5px 10px">
             <p style="margin: 0 10px 0 10px; font-size: 18px">جستجو بر اساس وضعیت کاربر :</p>
-            <select 
-                asp-for="IsActiveType" name="isActiveType" asp-items="Html.GetEnumSelectList<IsActiveType>()" class="form-control" placeholder="IsActive"></select>
+            <select asp-for="IsActiveType" name="isActiveType" asp-items="Html.GetEnumSelectList<IsActiveType>()" class="form-control" placeholder="IsActive"></select>
         </div>
 
         <div style="display: flex; align-items: center; margin: 5px 10px 5px 10px">
 
             <p style="margin: 0 10px 0 10px; font-size: 18px">جستجو بر اساس جنسیت کاربر :</p>
-            <div style="display: flex; align-items: center" class="form-control">
+            <select asp-for="GenderType" name="genderType" asp-items="Html.GetEnumSelectList<GenderType>()" class="form-control" placeholder="IsActive"></select>
+            @*<div style="display: flex; align-items: center" class="form-control">
 
-                <p style="margin: 0 10px 0 10px; font-size: 15px">مرد</p>
-                <input type="checkbox" name="male" value="" />
+            <p style="margin: 0 10px 0 10px; font-size: 15px">مرد</p>
+            <input type="checkbox" name="male" value="" />
 
-                <p style="margin: 0 10px 0 10px; font-size: 15px">زن</p>
-                <input type="checkbox" name="female" value="" />
+            <p style="margin: 0 10px 0 10px; font-size: 15px">زن</p>
+            <input type="checkbox" name="female" value="" />
 
-            </div>
+        </div>*@
 
         </div>
 

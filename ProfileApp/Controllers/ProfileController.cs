@@ -29,13 +29,29 @@ namespace ProfileApp.Controllers
 
         [Route("/")]
         //[Route("profile/{sortBy?}/{term?}")]
-        public IActionResult Index(string sortByAsc= "", string sortByDsc = "", string fName = "", string lName = "", IsActiveType isActiveType=IsActiveType.All)
+        public IActionResult Index(string sortByAsc= "", string sortByDsc = "", string fName = "", string lName = "", IsActiveType isActiveType=IsActiveType.All , GenderType genderType = GenderType.All)
         {
             IEnumerable<Profile> model;
 
-            if (!string.IsNullOrEmpty(lName) && !string.IsNullOrEmpty(fName) && isActiveType != IsActiveType.All)
+            if (!string.IsNullOrEmpty(lName) && !string.IsNullOrEmpty(fName) && isActiveType != IsActiveType.All && genderType != GenderType.All)
+            {
+                model = _db.Profiles.Where(b => b.LastName.Contains(lName) && b.FirstName.Contains(fName) && b.IsActive == isActiveType && b.Gender == genderType);
+            }
+            else if (!string.IsNullOrEmpty(lName) && !string.IsNullOrEmpty(fName) && isActiveType != IsActiveType.All)
             {
                 model = _db.Profiles.Where(b => b.LastName.Contains(lName) && b.FirstName.Contains(fName) && b.IsActive == isActiveType);
+            }
+            else if (!string.IsNullOrEmpty(lName) && !string.IsNullOrEmpty(fName) && genderType != GenderType.All)
+            {
+                model = _db.Profiles.Where(b => b.LastName.Contains(lName) && b.FirstName.Contains(fName) && b.Gender == genderType);
+            }
+            else if (!string.IsNullOrEmpty(fName) && isActiveType != IsActiveType.All && genderType != GenderType.All)
+            {
+                model = _db.Profiles.Where(b => b.FirstName.Contains(fName) && b.IsActive == isActiveType && b.Gender == genderType);
+            }
+            else if (!string.IsNullOrEmpty(lName) && isActiveType != IsActiveType.All && genderType != GenderType.All)
+            {
+                model = _db.Profiles.Where(b => b.LastName.Contains(lName) && b.IsActive == isActiveType && b.Gender == genderType);
             }
             else if (!string.IsNullOrEmpty(lName) && !string.IsNullOrEmpty(fName))
             {
@@ -49,6 +65,18 @@ namespace ProfileApp.Controllers
             {
                 model = _db.Profiles.Where(b => b.LastName.Contains(lName) && b.IsActive == isActiveType);
             }
+            else if (!string.IsNullOrEmpty(fName) && genderType != GenderType.All)
+            {
+                model = _db.Profiles.Where(b => b.FirstName.Contains(fName) && b.Gender == genderType);
+            }
+            else if (!string.IsNullOrEmpty(lName) && genderType != GenderType.All)
+            {
+                model = _db.Profiles.Where(b => b.LastName.Contains(lName) && b.Gender == genderType);
+            }
+            else if (isActiveType != IsActiveType.All && genderType != GenderType.All)
+            {
+                model = _db.Profiles.Where(b => b.IsActive == isActiveType && b.Gender == genderType);
+            }
             else if (!string.IsNullOrEmpty(fName))
             {
                 model = _db.Profiles.Where(b => b.FirstName.Contains(fName));
@@ -60,6 +88,10 @@ namespace ProfileApp.Controllers
             else if (isActiveType != IsActiveType.All)
             {
                 model = _db.Profiles.Where(p => p.IsActive == isActiveType);
+            }
+            else if (genderType != GenderType.All)
+            {
+                model = _db.Profiles.Where(b => b.Gender == genderType);
             }
             else
             {
@@ -142,7 +174,7 @@ namespace ProfileApp.Controllers
             
             ViewData["sortByAsc"] = sortByAsc;
             ViewData["sortByDsc"] = sortByDsc;
-            var vm = new ProfileViewModel {Users = model, FName = fName, LName = lName, IsActiveType = isActiveType };
+            var vm = new ProfileViewModel {Users = model, FName = fName, LName = lName, IsActiveType = isActiveType , GenderType = genderType};
             return View(vm);
         }
 
