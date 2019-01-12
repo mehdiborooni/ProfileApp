@@ -124,16 +124,9 @@ namespace ProfileApp.Controllers
                     break;
                 }
             }
-
             
-            
-            
-            ViewData["sortByAsc"] = sortByAsc;
-            ViewData["sortByDsc"] = sortByDsc;
-            var vm = new ProfileViewModel {Users = model, FName = fName, LName = lName, IsActiveType = isActiveType , GenderType = genderType, StartAge = startAge , EndAge = endAge};
-
-
-            //var list = model.ToList();
+           
+            var vm = new ProfileViewModel {Users = model, FName = fName, LName = lName, IsActiveType = isActiveType , GenderType = genderType, StartAge = startAge , EndAge = endAge , sortByAsc = sortByAsc , sortByDsc = sortByDsc };
 
             return View(vm);
         }

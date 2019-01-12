@@ -14,6 +14,8 @@ namespace ProfileApp.Models
         public GenderType GenderType { get; set; }
         public string StartAge { get; set; }
         public string EndAge { get; set; }
+        public string sortByAsc { get; set; }
+        public string sortByDsc { get; set; }
     }
 
 }
