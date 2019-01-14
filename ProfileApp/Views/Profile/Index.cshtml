@@ -4,9 +4,7 @@
 @using ProfileApp.Common
 @model ProfileViewModel
 
-@{
-    var i = 1;
-}
+
 
 <div style="display: flex; justify-content: space-between">
     <h2>ProfileIndex</h2>
@@ -177,7 +175,7 @@
 
         {
             <tr>
-                <td>@i</td>
+                <td>@profile.Number</td>
                 <td>@profile.FirstName</td>
                 <td>@profile.LastName</td>
                 <td>
@@ -223,20 +221,40 @@
                 <td><a asp-action="Edit" asp-route-id="@profile.Id" asp-controller="Profile" class="btn btn-primary">Edit</a></td>
 
             </tr>
-            i++;
+           
         }
             <tr>
                 <td colspan="2">
                 count: @Model.Users.Count()
                 </td>
             </tr>
-            <tr>
-                @{
-                    for (i = 1; i <= 5; i++)
-                    {
-                    <td><a asp-action="Pagination" asp-controller="Profile" class="btn btn-primary">@i</a></td>
+    <tr>
+        <td colspan="3">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination pg-blue">
+                    @{
+                        if (ViewBag.PageId > 1)
+                        {
+                            <li class="page-item"><a href="@Url.Action("Index", new {page = 1})" class="page-link">اول</a></li>
+                            <li class="page-item"><a href="@Url.Action("Index", new {page = ViewBag.PageId - 1})" class="page-link">قبلی</a></li>
+                        }
                     }
-                 }
-            </tr>
+
+                    @for (int i = (ViewBag.PageId - 2 > 0) ? i= ViewBag.PageId-2 : i=1 ; (ViewBag.PageId + 2 > ViewBag.PageCount) ? i <= ViewBag.PageCount : i < ViewBag.PageId+2 ; i++)
+                    {
+                        <li class="page-item"><a href="@Url.Action("Index", new {page = i})" class="page-link">@i</a></li>
+                    }
+                    @{
+                        if (ViewBag.PageId < ViewBag.PageCount)
+                        {
+                            <li class="page-item"><a href="@Url.Action("Index", new {page = ViewBag.PageId + 1})" class="page-link">بعدی</a></li>
+                            <li class="page-item"><a href="@Url.Action("Index", new {page = ViewBag.PageCount})" class="page-link">آخر</a></li>
+                        }
+                    }
+
+                </ul>
+            </nav>
+        </td>
+    </tr>
         </tbody>
     </table>

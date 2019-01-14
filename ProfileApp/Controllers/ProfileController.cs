@@ -29,7 +29,7 @@ namespace ProfileApp.Controllers
 
         [Route("/")]
         //[Route("profile/{sortBy?}/{term?}")]
-        public IActionResult Index(string sortByAsc= "", string sortByDsc = "", string fName = "", string lName = "", IsActiveType isActiveType=IsActiveType.All , GenderType genderType = GenderType.All, string age="" , string startAge ="12" , string endAge ="99")
+        public IActionResult Index(string sortByAsc= "", string sortByDsc = "", string fName = "", string lName = "", IsActiveType isActiveType=IsActiveType.All , GenderType genderType = GenderType.All, string age="" , string startAge ="12" , string endAge ="99", int page =1, int number =1 )
         {
             IEnumerable<Profile> model;
 
@@ -124,27 +124,31 @@ namespace ProfileApp.Controllers
                     break;
                 }
             }
+
+
+            int totalCount = model.Count();
+
             
-           
+
+
+            int pageitem = 10;
+            int skip = (page - 1) * pageitem;
+            ViewBag.PageCount = totalCount / pageitem;
+            ViewBag.PageId = page;
+            if (totalCount % pageitem != 0)
+            {
+                ViewBag.PageCount = (totalCount / pageitem) + 1;
+            }
+
+            model = model.Skip(skip).Take(pageitem);
+
             var vm = new ProfileViewModel {Users = model, FName = fName, LName = lName, IsActiveType = isActiveType , GenderType = genderType, StartAge = startAge , EndAge = endAge , sortByAsc = sortByAsc , sortByDsc = sortByDsc };
+
 
             return View(vm);
         }
 
-        public IActionResult Pagination(IQueryable<Profile> model)
-        {
-            
-            var pageCount = (_db.Profiles.Count()) / 10;
-
-            ViewData["pageCount"] = pageCount;
-
-            for (int i = 0; i < pageCount; i++)
-            {
-               
-                    model= _db.Profiles.Skip(i).Take(i + 10);
-            }
-            return RedirectToAction(nameof(Index));
-        }
+        
 
         [Route("profile/create/{id?}")]
         [HttpGet]
