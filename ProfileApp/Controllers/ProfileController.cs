@@ -135,6 +135,7 @@ namespace ProfileApp.Controllers
             int skip = (page - 1) * pageitem;
             ViewBag.PageCount = totalCount / pageitem;
             ViewBag.PageId = page;
+            ViewBag.totalCount = totalCount;
             if (totalCount % pageitem != 0)
             {
                 ViewBag.PageCount = (totalCount / pageitem) + 1;

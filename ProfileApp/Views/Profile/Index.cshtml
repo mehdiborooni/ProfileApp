@@ -66,171 +66,174 @@
 
 <table class="table table-hover">
     <thead>
-        <tr>
-            <th>#</th>
-            <th>
-                <a asp-action="Index" asp-controller="Profile" asp-route-sortByAsc="FirstName"
-                   asp-route-fName="@Model.FName"
-                   asp-route-lName="@Model.LName"
-                   asp-route-isActiveType="@Model.IsActiveType"
-                   asp-route-genderType="@Model.GenderType"
-                   asp-route-startAge="@Model.StartAge"
-                   asp-route-endAge="@Model.EndAge"
-                   style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
-                FirstName
-                <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="FirstName"
-                   asp-route-fName="@Model.FName"
-                   asp-route-lName="@Model.LName"
-                   asp-route-isActiveType="@Model.IsActiveType"
-                   asp-route-genderType="@Model.GenderType"
-                   asp-route-startAge="@Model.StartAge"
-                   asp-route-endAge="@Model.EndAge"
-                   style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
-            </th>
-            <th>
-                <a asp-action="Index" asp-controller="Profile" asp-route-sortByAsc="LastName"
-                   asp-route-fName="@Model.FName"
-                   asp-route-lName="@Model.LName"
-                   asp-route-isActiveType="@Model.IsActiveType"
-                   asp-route-genderType="@Model.GenderType"
-                   asp-route-startAge="@Model.StartAge"
-                   asp-route-endAge="@Model.EndAge"
-                   style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
-                LastName
-                <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="LastName"
-                   asp-route-fName="@Model.FName"
-                   asp-route-lName="@Model.LName"
-                   asp-route-isActiveType="@Model.IsActiveType"
-                   asp-route-genderType="@Model.GenderType"
-                   asp-route-startAge="@Model.StartAge"
-                   asp-route-endAge="@Model.EndAge"
-                   style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
-            </th>
-            <th>
-                <a asp-action="Index" asp-controller="Profile" asp-route-sortByAsc="Gender"
-                   asp-route-fName="@Model.FName"
-                   asp-route-lName="@Model.LName"
-                   asp-route-isActiveType="@Model.IsActiveType"
-                   asp-route-genderType="@Model.GenderType"
-                   asp-route-startAge="@Model.StartAge"
-                   asp-route-endAge="@Model.EndAge"
-                   style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
-                Gender
-                <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="Gender"
-                   asp-route-fName="@Model.FName"
-                   asp-route-lName="@Model.LName"
-                   asp-route-isActiveType="@Model.IsActiveType"
-                   asp-route-genderType="@Model.GenderType"
-                   asp-route-startAge="@Model.StartAge"
-                   asp-route-endAge="@Model.EndAge"
-                   style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
-            </th>
-            <th>
-                <a asp-action="Index" asp-controller="Profile" asp-route-sortByAsc="Age"
-                   asp-route-fName="@Model.FName"
-                   asp-route-lName="@Model.LName"
-                   asp-route-isActiveType="@Model.IsActiveType"
-                   asp-route-genderType="@Model.GenderType"
-                   asp-route-startAge="@Model.StartAge"
-                   asp-route-endAge="@Model.EndAge"
-                   style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
-                Age
-                <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="Age"
-                   asp-route-fName="@Model.FName"
-                   asp-route-lName="@Model.LName"
-                   asp-route-isActiveType="@Model.IsActiveType"
-                   asp-route-genderType="@Model.GenderType"
-                   asp-route-startAge="@Model.StartAge"
-                   asp-route-endAge="@Model.EndAge"
-                   style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
-            </th>
-            <th>Phone</th>
-            <th>
-                <a asp-action="Index" asp-controller="Profile" asp-route-sortByAsc="IsActive"
-                   asp-route-fName="@Model.FName"
-                   asp-route-lName="@Model.LName"
-                   asp-route-isActiveType="@Model.IsActiveType"
-                   asp-route-genderType="@Model.GenderType"
-                   asp-route-startAge="@Model.StartAge"
-                   asp-route-endAge="@Model.EndAge"
-                   style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
-                IsActive
-                <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="IsActive"
-                   asp-route-fName="@Model.FName"
-                   asp-route-lName="@Model.LName"
-                   asp-route-isActiveType="@Model.IsActiveType"
-                   asp-route-genderType="@Model.GenderType"
-                   asp-route-startAge="@Model.StartAge"
-                   asp-route-endAge="@Model.EndAge"
-                   style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
-            </th>
-            @*<th>TimeCreated</th>
+    <tr>
+        <th>#</th>
+        <th>
+            <a asp-action="Index" asp-controller="Profile" asp-route-sortByAsc="FirstName"
+               asp-route-fName="@Model.FName"
+               asp-route-lName="@Model.LName"
+               asp-route-isActiveType="@Model.IsActiveType"
+               asp-route-genderType="@Model.GenderType"
+               asp-route-startAge="@Model.StartAge"
+               asp-route-endAge="@Model.EndAge"
+               style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
+            FirstName
+            <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="FirstName"
+               asp-route-fName="@Model.FName"
+               asp-route-lName="@Model.LName"
+               asp-route-isActiveType="@Model.IsActiveType"
+               asp-route-genderType="@Model.GenderType"
+               asp-route-startAge="@Model.StartAge"
+               asp-route-endAge="@Model.EndAge"
+               style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-controller="Profile" asp-route-sortByAsc="LastName"
+               asp-route-fName="@Model.FName"
+               asp-route-lName="@Model.LName"
+               asp-route-isActiveType="@Model.IsActiveType"
+               asp-route-genderType="@Model.GenderType"
+               asp-route-startAge="@Model.StartAge"
+               asp-route-endAge="@Model.EndAge"
+               style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
+            LastName
+            <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="LastName"
+               asp-route-fName="@Model.FName"
+               asp-route-lName="@Model.LName"
+               asp-route-isActiveType="@Model.IsActiveType"
+               asp-route-genderType="@Model.GenderType"
+               asp-route-startAge="@Model.StartAge"
+               asp-route-endAge="@Model.EndAge"
+               style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-controller="Profile" asp-route-sortByAsc="Gender"
+               asp-route-fName="@Model.FName"
+               asp-route-lName="@Model.LName"
+               asp-route-isActiveType="@Model.IsActiveType"
+               asp-route-genderType="@Model.GenderType"
+               asp-route-startAge="@Model.StartAge"
+               asp-route-endAge="@Model.EndAge"
+               style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
+            Gender
+            <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="Gender"
+               asp-route-fName="@Model.FName"
+               asp-route-lName="@Model.LName"
+               asp-route-isActiveType="@Model.IsActiveType"
+               asp-route-genderType="@Model.GenderType"
+               asp-route-startAge="@Model.StartAge"
+               asp-route-endAge="@Model.EndAge"
+               style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-controller="Profile" asp-route-sortByAsc="Age"
+               asp-route-fName="@Model.FName"
+               asp-route-lName="@Model.LName"
+               asp-route-isActiveType="@Model.IsActiveType"
+               asp-route-genderType="@Model.GenderType"
+               asp-route-startAge="@Model.StartAge"
+               asp-route-endAge="@Model.EndAge"
+               style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
+            Age
+            <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="Age"
+               asp-route-fName="@Model.FName"
+               asp-route-lName="@Model.LName"
+               asp-route-isActiveType="@Model.IsActiveType"
+               asp-route-genderType="@Model.GenderType"
+               asp-route-startAge="@Model.StartAge"
+               asp-route-endAge="@Model.EndAge"
+               style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
+        </th>
+        <th>Phone</th>
+        <th>
+            <a asp-action="Index" asp-controller="Profile" asp-route-sortByAsc="IsActive"
+               asp-route-fName="@Model.FName"
+               asp-route-lName="@Model.LName"
+               asp-route-isActiveType="@Model.IsActiveType"
+               asp-route-genderType="@Model.GenderType"
+               asp-route-startAge="@Model.StartAge"
+               asp-route-endAge="@Model.EndAge"
+               style="margin-right: 5px"><i class="fa fa-arrow-down"></i></a>
+            IsActive
+            <a asp-action="Index" asp-controller="Profile" asp-route-sortByDsc="IsActive"
+               asp-route-fName="@Model.FName"
+               asp-route-lName="@Model.LName"
+               asp-route-isActiveType="@Model.IsActiveType"
+               asp-route-genderType="@Model.GenderType"
+               asp-route-startAge="@Model.StartAge"
+               asp-route-endAge="@Model.EndAge"
+               style="margin-left: 5px"><i class="fa fa-arrow-up"></i></a>
+        </th>
+        @*<th>TimeCreated</th>
                 <th>TimeEdited</th>*@
-            <th></th>
-            <th></th>
-        </tr>
+        <th></th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var profile in Model.Users)
+    
+    
 
-        {
-            <tr>
-                <td>@profile.Number</td>
-                <td>@profile.FirstName</td>
-                <td>@profile.LastName</td>
-                <td>
-                    @if (profile.Gender == GenderType.Male)
-                    {
-                        <i class="fa fa-male"></i>
-                    }
-                    else if (profile.Gender == GenderType.Female)
-                    {
-                        <i class="fa fa-female"></i>
-                    }
-                    else
-                    {
-                        <i class="fa fa-minus"></i>
-                    }
-                    @profile.Gender.DisplayName()
+    @foreach (var profile in Model.Users)
 
-                </td>
-                <td>@profile.Age</td>
-                <td>@profile.Phone</td>
-                <td>
-                    @if (profile.IsActive == IsActiveType.Active)
-                    {
-                        <i class="fa fa-check" style="color:chartreuse"></i>
-                    }
-                    else if (profile.IsActive == IsActiveType.DeActive)
-                    {
-                        <i class="fa fa-times" style="color:dimgray"></i>
-                    }
-                    else if (profile.IsActive == IsActiveType.Block)
-                    {
-                        <i class="fa fa-ban" style="color: red"></i>
-                    }
-                    else
-                    {
-                        <i class="fa fa-minus"></i>
-                    }
-                    @profile.IsActive.DisplayName()
-                </td>
-                @*<td>@profile.TimeCreated</td>
+    {
+        <tr>
+            <td>@profile.Number</td>
+            
+            <td>@profile.FirstName</td>
+            <td>@profile.LastName</td>
+            <td>
+                @if (profile.Gender == GenderType.Male)
+                {
+                    <i class="fa fa-male"></i>
+                }
+                else if (profile.Gender == GenderType.Female)
+                {
+                    <i class="fa fa-female"></i>
+                }
+                else
+                {
+                    <i class="fa fa-minus"></i>
+                }
+                @profile.Gender.DisplayName()
+
+            </td>
+            <td>@profile.Age</td>
+            <td>@profile.Phone</td>
+            <td>
+                @if (profile.IsActive == IsActiveType.Active)
+                {
+                    <i class="fa fa-check" style="color: chartreuse"></i>
+                }
+                else if (profile.IsActive == IsActiveType.DeActive)
+                {
+                    <i class="fa fa-times" style="color: dimgray"></i>
+                }
+                else if (profile.IsActive == IsActiveType.Block)
+                {
+                    <i class="fa fa-ban" style="color: red"></i>
+                }
+                else
+                {
+                    <i class="fa fa-minus"></i>
+                }
+                @profile.IsActive.DisplayName()
+            </td>
+            @*<td>@profile.TimeCreated</td>
                     <td>@profile.TimeEdited</td>*@
-                <td><a asp-action="Details" asp-route-id="@profile.Id" asp-controller="Profile" class="btn btn-info">Details</a></td>
-                <td><a asp-action="Edit" asp-route-id="@profile.Id" asp-controller="Profile" class="btn btn-primary">Edit</a></td>
+            <td><a asp-action="Details" asp-route-id="@profile.Id" asp-controller="Profile" class="btn btn-info">Details</a></td>
+            <td><a asp-action="Edit" asp-route-id="@profile.Id" asp-controller="Profile" class="btn btn-primary">Edit</a></td>
 
-            </tr>
-           
-        }
-            <tr>
-                <td colspan="2">
-                count: @Model.Users.Count()
-                </td>
-            </tr>
-    <tr>
-        <td colspan="3">
-            <nav aria-label="Page navigation example">
+        </tr>
+       
+    }
+    </tbody>
+</table>
+
+<hr/>
+            count : @ViewBag.totalCount
+       
+            <nav aria-label="Page navigation example" style="display: flex; justify-content: center">
                 <ul class="pagination pg-blue">
                     @{
                         if (ViewBag.PageId > 1)
@@ -240,7 +243,7 @@
                         }
                     }
 
-                    @for (int i = (ViewBag.PageId - 2 > 0) ? i= ViewBag.PageId-2 : i=1 ; (ViewBag.PageId + 2 > ViewBag.PageCount) ? i <= ViewBag.PageCount : i < ViewBag.PageId+2 ; i++)
+                    @for (int i = (ViewBag.PageId - 2 > 0) ? i = ViewBag.PageId - 2 : i = 1; (ViewBag.PageId + 2 > ViewBag.PageCount) ? i <= ViewBag.PageCount : i < ViewBag.PageId + 2; i++)
                     {
                         <li class="page-item"><a href="@Url.Action("Index", new {page = i})" class="page-link">@i</a></li>
                     }
@@ -254,7 +257,5 @@
 
                 </ul>
             </nav>
-        </td>
-    </tr>
-        </tbody>
-    </table>
+        
+    
