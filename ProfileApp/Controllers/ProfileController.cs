@@ -126,22 +126,23 @@ namespace ProfileApp.Controllers
             }
 
 
-            int totalCount = model.Count();
-
-            
-
-
-            int pageitem = 10;
-            int skip = (page - 1) * pageitem;
-            ViewBag.PageCount = totalCount / pageitem;
-            ViewBag.PageId = page;
+            int totalCount = model.Count(); // تعداد کل آیتم ها
+            int pageitem = 12; // تعداد آیتم ها در هر صفحه
+            int skip = (page - 1) * pageitem; // تعداد صفحاتی که باید رد شود
+            ViewBag.PageCount = totalCount / pageitem; // تعداد صفحات
+            ViewBag.pageitem = pageitem;
+            ViewBag.PageId = page; // شماره صفحه
             ViewBag.totalCount = totalCount;
+
             if (totalCount % pageitem != 0)
             {
                 ViewBag.PageCount = (totalCount / pageitem) + 1;
             }
 
             model = model.Skip(skip).Take(pageitem);
+
+
+
 
             var vm = new ProfileViewModel {Users = model, FName = fName, LName = lName, IsActiveType = isActiveType , GenderType = genderType, StartAge = startAge , EndAge = endAge , sortByAsc = sortByAsc , sortByDsc = sortByDsc };
 
